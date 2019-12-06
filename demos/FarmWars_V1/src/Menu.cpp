@@ -10,7 +10,7 @@
 #include "Menu.h"
 #include "Game.h"
 
-#include "lama_sprite.h"
+#include "../sprites/lama_sprite.h"
 
 
 std::vector<Background *> Menu::backgrounds() {

@@ -1,0 +1,14 @@
+//
+// Created by Guido Frissaer on 05/12/2019.
+//
+
+#ifndef GBA_SPRITE_ENGINE_PROJECT_CLOSECOMBAT_H
+#define GBA_SPRITE_ENGINE_PROJECT_CLOSECOMBAT_H
+
+
+class CloseCombat {
+
+};
+
+
+#endif //GBA_SPRITE_ENGINE_PROJECT_CLOSECOMBAT_H

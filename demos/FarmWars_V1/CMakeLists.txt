@@ -4,9 +4,21 @@ add_executable(${PROJECT_NAME}.elf
         src/main.cpp
         src/Menu.cpp
         src/Menu.h
-        src/lama_sprite.h
+        sprites/lama_sprite.h
         src/Game.cpp
-        src/Game.h)
+        src/Game.h
+        src/Base.cpp
+        src/Base.h
+        src/Animal.cpp
+        src/Animal.h
+        src/Damage.cpp
+        src/Damage.h
+        src/Health.cpp
+        src/Health.h
+        src/Range.cpp
+        src/Range.h
+        src/CloseCombat.cpp
+        src/CloseCombat.h)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
 

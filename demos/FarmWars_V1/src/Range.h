@@ -5,8 +5,9 @@
 #ifndef GBA_SPRITE_ENGINE_PROJECT_RANGE_H
 #define GBA_SPRITE_ENGINE_PROJECT_RANGE_H
 
+#include "Animal.h"
 
-class Range {
+class Range : public Animal {
 
 };
 

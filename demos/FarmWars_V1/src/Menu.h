@@ -10,7 +10,8 @@
 class Menu : public Scene {
 private:
     bool pressingAorB = false;
-    std::unique_ptr<Sprite> Lama ;
+    std::unique_ptr<Background> bg;
+
 public:
     std::vector<Sprite *> sprites() override;
     std::vector<Background *> backgrounds() override;

@@ -9,6 +9,12 @@
 
 class Game : public Scene {
 private:
+    std::unique_ptr<Sprite> Lama ;
+    std::unique_ptr<Sprite> Eend ;
+    std::unique_ptr<Sprite> Kip ;
+    std::unique_ptr<Sprite> Konijn ;
+    std::unique_ptr<Sprite> Koe ;
+    std::unique_ptr<Sprite> Yoda ;
 
 public:
     std::vector<Sprite *> sprites() override;

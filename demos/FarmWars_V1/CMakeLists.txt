@@ -18,7 +18,7 @@ add_executable(${PROJECT_NAME}.elf
         src/Range.cpp
         src/Range.h
         src/CloseCombat.cpp
-        src/CloseCombat.h sprites/startscreen.h sprites/yoda_sprite.h)
+        src/CloseCombat.h sprites/startscreen.h sprites/yoda_sprite.h sprites/select_sprite.h)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
 

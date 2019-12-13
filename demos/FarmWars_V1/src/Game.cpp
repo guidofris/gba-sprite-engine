@@ -17,6 +17,7 @@
 #include "../sprites/startscreen.h"
 #include "../sprites/koe_sprite.h"
 #include "../sprites/yoda_sprite.h"
+#include "../sprites/select_sprite.h"
 #include "../sprites/sharedpal.h"
 
 std::vector<Background *> Game::backgrounds() {
@@ -24,7 +25,7 @@ std::vector<Background *> Game::backgrounds() {
 }
 
 std::vector<Sprite *> Game::sprites() {
-    return { Lama.get(), Konijn.get(), Koe.get(), Kip.get(), Eend.get(), Yoda.get() };
+    return { Lama.get(), Konijn.get(), Koe.get(), Kip.get(), Eend.get(), Yoda.get(), Select.get() };
 }
 
 void Game::load() {
@@ -75,8 +76,46 @@ void Game::load() {
             .withAnimated(5, 3)
             .withLocation(150, 100)
             .buildPtr();
+
+    Select = builder
+            .withData(selectTiles, sizeof(selectTiles))
+            .withSize(SIZE_32_32)
+            .withLocation(getSelectX(), getSelectY())
+            .buildPtr();
 }
 
 void Game::tick(u16 keys) {
 
+    if(keys & KEY_LEFT) {
+        setSelectX(getSelectX() - 50)  ;
+        Select->moveTo(getSelectX(), getSelectY()) ;
+    }
+    else if(keys & KEY_RIGHT) {
+        setSelectX(getSelectX() + 50) ;
+        Select->moveTo(getSelectX(), getSelectY()) ;
+    }
+    else if(keys & KEY_UP) {
+        setSelectY(getSelectY() - 50) ;
+        Select->moveTo(getSelectX(), getSelectY()) ;
+    }
+    else if(keys & KEY_DOWN) {
+        setSelectY(getSelectY() + 50) ;
+        Select->moveTo(getSelectX(), getSelectY()) ;
+    }
+}
+
+void Game::setSelectX(int selectX) {
+    SelectX = selectX;
+}
+
+void Game::setSelectY(int selectY) {
+    SelectY = selectY;
+}
+
+int Game::getSelectX() const {
+    return SelectX;
+}
+
+int Game::getSelectY() const {
+    return SelectY;
 }

@@ -15,6 +15,19 @@ private:
     std::unique_ptr<Sprite> Konijn ;
     std::unique_ptr<Sprite> Koe ;
     std::unique_ptr<Sprite> Yoda ;
+    std::unique_ptr<Sprite> Select ;
+    int SelectX = 50;
+public:
+    int getSelectX() const;
+
+    int getSelectY() const;
+
+private:
+    int SelectY = 50;
+
+public:
+    void setSelectY(int selectY);
+    void setSelectX(int selectX);
 
 public:
     std::vector<Sprite *> sprites() override;

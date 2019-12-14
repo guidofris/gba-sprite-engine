@@ -25,7 +25,7 @@ std::vector<Background *> Game::backgrounds() {
 }
 
 std::vector<Sprite *> Game::sprites() {
-    return { Lama.get(), Konijn.get(), Koe.get(), Kip.get(), Eend.get(), Yoda.get(), Select.get() };
+    return { Select.get(), Lama.get(), Konijn.get(), Koe.get(), Kip.get(), Eend.get(), Yoda.get() };
 }
 
 void Game::load() {
@@ -34,6 +34,12 @@ void Game::load() {
     //backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(FarmWarResizedPal, sizeof(FarmWarResizedPal)));
 
     SpriteBuilder<Sprite> builder;
+
+    Select = builder
+            .withData(selectTiles, sizeof(selectTiles))
+            .withSize(SIZE_32_32)
+            .withLocation(getSelectX(), getSelectY())
+            .buildPtr();
 
     Lama = builder
             .withData(lamaTiles, sizeof(lamaTiles))
@@ -76,31 +82,60 @@ void Game::load() {
             .withAnimated(5, 3)
             .withLocation(150, 100)
             .buildPtr();
-
-    Select = builder
-            .withData(selectTiles, sizeof(selectTiles))
-            .withSize(SIZE_32_32)
-            .withLocation(getSelectX(), getSelectY())
-            .buildPtr();
 }
 
 void Game::tick(u16 keys) {
+    bool Control = TRUE ;
 
-    if(keys & KEY_LEFT) {
-        setSelectX(getSelectX() - 50)  ;
-        Select->moveTo(getSelectX(), getSelectY()) ;
+    if(keys & KEY_LEFT && Control && Select->getX() > 50) {
+        Select->moveTo(getSelectX()-50, getSelectY()) ;
+        Control = FALSE ;
     }
-    else if(keys & KEY_RIGHT) {
-        setSelectX(getSelectX() + 50) ;
-        Select->moveTo(getSelectX(), getSelectY()) ;
+    else if(keys & KEY_RIGHT && Control && Select->getX() < 150) {
+        Select->moveTo(getSelectX()+50, getSelectY()) ;
+        Control = FALSE ;
+
     }
-    else if(keys & KEY_UP) {
-        setSelectY(getSelectY() - 50) ;
-        Select->moveTo(getSelectX(), getSelectY()) ;
+    else if(keys & KEY_UP && Control && Select->getY() > 50) {
+        Select->moveTo(getSelectX(), getSelectY()-50) ;
+        Control = FALSE ;
+
     }
-    else if(keys & KEY_DOWN) {
-        setSelectY(getSelectY() + 50) ;
-        Select->moveTo(getSelectX(), getSelectY()) ;
+    else if(keys & KEY_DOWN && Control && Select->getY() < 100) {
+        Select->moveTo(getSelectX(), getSelectY()+50) ;
+        Control = FALSE ;
+    }
+    else {
+        Control = TRUE;
+        setSelectX(Select->getX());
+        setSelectY(Select->getY());
+    }
+
+    if(keys & KEY_A) {
+        if(Select->getX() == 50) {
+            if(Select->getY() == 50) {
+                TextStream::instance().setText("That's a lama", 2, 8);
+            }
+            else if(Select->getY() == 100) {
+                TextStream::instance().setText("That's a duck", 2, 8);
+            }
+        }
+        else if(Select->getX() == 100) {
+            if(Select->getY() == 50) {
+                TextStream::instance().setText("That's a chicken", 2, 8);
+            }
+            else if(Select->getY() == 100) {
+                TextStream::instance().setText("That's a bunny", 2, 8);
+            }
+        }
+        else if(Select->getX() == 150) {
+            if(Select->getY() == 50) {
+                TextStream::instance().setText("That's a cow", 2, 8);
+            }
+            else if(Select->getY() == 100) {
+                TextStream::instance().setText("That's a Yoda", 2, 8);
+            }
+        }
     }
 }
 

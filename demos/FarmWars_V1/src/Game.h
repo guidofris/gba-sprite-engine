@@ -1,5 +1,5 @@
 //
-// Created by Guido Frissaer on 05/12/2019.
+// Created by Guido Frissaer on 14/12/2019.
 //
 
 #ifndef GBA_SPRITE_ENGINE_PROJECT_GAME_H
@@ -9,25 +9,9 @@
 
 class Game : public Scene {
 private:
-    std::unique_ptr<Sprite> Lama ;
-    std::unique_ptr<Sprite> Eend ;
-    std::unique_ptr<Sprite> Kip ;
-    std::unique_ptr<Sprite> Konijn ;
-    std::unique_ptr<Sprite> Koe ;
-    std::unique_ptr<Sprite> Yoda ;
-    std::unique_ptr<Sprite> Select ;
-    int SelectX = 50;
-public:
-    int getSelectX() const;
-
-    int getSelectY() const;
-
-private:
-    int SelectY = 50;
-
-public:
-    void setSelectY(int selectY);
-    void setSelectX(int selectX);
+    std::shared_ptr<int> Spawn ;
+    std::unique_ptr<Background> bg;
+    int scrollX = 0;
 
 public:
     std::vector<Sprite *> sprites() override;

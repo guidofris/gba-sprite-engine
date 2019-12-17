@@ -2,7 +2,7 @@
 // Created by Wouter Groeneveld on 08/08/18.
 //
 
-#ifndef GBA_SPRITE_ENGINE_PROJECT_GAME_H
+#ifndef GBA_SPRITE_ENGINE_PROJECT_SELECT_H
 #define GBA_SPRITE_ENGINE_PROJECT_GAME_H
 
 #include <libgba-sprite-engine/gba_engine.h>
@@ -32,4 +32,4 @@ public:
 };
 
 
-#endif //GBA_SPRITE_ENGINE_PROJECT_GAME_H
+#endif //GBA_SPRITE_ENGINE_PROJECT_SELECT_H

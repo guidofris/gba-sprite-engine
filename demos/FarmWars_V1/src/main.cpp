@@ -20,8 +20,8 @@
 int main() {
     std::shared_ptr<GBAEngine> engine(new GBAEngine());
 
-    Menu* startScene = new Menu(engine);
-    engine->setScene(startScene);
+    Menu* menuScene = new Menu(engine);
+    engine->setScene(menuScene);
 
     while (true) {
         engine->update();

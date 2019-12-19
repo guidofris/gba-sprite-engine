@@ -11,6 +11,7 @@
 #include "Game.h"
 #include "Select.h"
 #include "../sprites/farm.h"
+#include "FarmBase.h"
 
 std::vector<Background *> Game::backgrounds() {
     return { bg.get() };
@@ -29,6 +30,11 @@ void Game::load() {
 
     bg = std::unique_ptr<Background>(new Background(1, FarmLandscapeTiles, sizeof(FarmLandscapeTiles), FarmLandscapeMap, sizeof(FarmLandscapeMap)));
     bg.get()->useMapScreenBlock(16);
+
+    //TODO: create 2 bases
+    if (gMyFarm == nullptr) gMyFarm = new FarmBase(1, 0);
+    if (gAIFarm == nullptr) gAIFarm = new FarmBase(-1, 100);
+
 }
 
 void Game::tick(u16 keys) {

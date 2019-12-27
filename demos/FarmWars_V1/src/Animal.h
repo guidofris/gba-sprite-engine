@@ -7,7 +7,10 @@
 
 
 #include <libgba-sprite-engine/sprites/sprite.h>
+<<<<<<< HEAD
 #include "FarmBase.h"
+=======
+>>>>>>> moving animals from base (draft)
 
 class Animal
 {
@@ -21,6 +24,15 @@ private:
     int m_damage;   // how much damage an animal does
     int m_speed;    // how fast an animal moves
     int m_position;
+<<<<<<< HEAD
+=======
+public:
+    int getMPosition() const;
+
+    void setMPosition(int mPosition);
+
+private:
+>>>>>>> moving animals from base (draft)
     int m_animaltype;
 
 public:
@@ -32,6 +44,7 @@ public:
     void attack(Animal* enemy);
     bool isDead();
     bool isAlive();
+<<<<<<< HEAD
     void move(FarmBase* base);
 
 };
@@ -40,9 +53,10 @@ class Yoda : public Animal {
 
 public:
     Yoda() : Animal(100,200, 100, 100, 10)
-    {
+=======
+    void move(int position);
 
-    }
+
 };
 
 class Lama : public Animal {
@@ -53,6 +67,63 @@ public:
 
     }
 };
+
+class Kip : public Animal {
+
+public:
+    Kip() : Animal(50, 100, 200, 50, 1)
+>>>>>>> moving animals from base (draft)
+    {
+
+    }
+};
+
+<<<<<<< HEAD
+class Lama : public Animal {
+
+public:
+    Lama() : Animal(50, 100, 200, 50, 1)
+=======
+class Koe : public Animal {
+
+public:
+    Koe() : Animal(50, 100, 200, 50, 1)
+>>>>>>> moving animals from base (draft)
+    {
+
+    }
+};
+<<<<<<< HEAD
+=======
+
+class Eend : public Animal {
+
+public:
+    Eend() : Animal(50, 100, 200, 50, 1)
+    {
+
+    }
+};
+
+class Konijn : public Animal {
+
+public:
+    Konijn() : Animal(50, 100, 200, 50, 1)
+    {
+
+    }
+};
+
+class Yoda : public Animal {
+
+public:
+    Yoda() : Animal(100,200, 100, 100, 10)
+    {
+
+    }
+
+};
+>>>>>>> moving animals from base (draft)
 
 #endif //GBA_SPRITE_ENGINE_PROJECT_ANIMAL_H
 

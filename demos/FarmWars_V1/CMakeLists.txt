@@ -7,8 +7,8 @@ add_executable(${PROJECT_NAME}.elf
         sprites/lama_sprite.h
         src/Select.cpp
         src/Select.h
-        src/Base.cpp
-        src/Base.h
+        src/FarmBase.cpp
+        src/FarmBase.h
         src/Animal.cpp
         src/Animal.h
         src/Damage.cpp

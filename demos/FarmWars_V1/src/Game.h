@@ -6,6 +6,8 @@
 #define GBA_SPRITE_ENGINE_PROJECT_GAME_H
 
 #include <libgba-sprite-engine/scene.h>
+#include "FarmBase.h"
+
 
 class Game : public Scene {
 private:
@@ -17,10 +19,17 @@ public:
     std::vector<Sprite *> sprites() override;
     std::vector<Background *> backgrounds() override;
 
-    Game(std::shared_ptr<GBAEngine> engine) : Scene(engine) {}
+    static FarmBase *myFarm;
+    static FarmBase *aiFarm;
+
+    Game(std::shared_ptr<GBAEngine> engine);
 
     void load() override;
     void tick(u16 keys) override;
+
+    int tickCounter = 0;
+
+
 };
 
 

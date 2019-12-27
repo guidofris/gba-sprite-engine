@@ -16,6 +16,15 @@ bool Animal::isAlive() {
     return m_health >= 0;
 }
 
-void Animal::move(FarmBase *base) {
-    m_position += (base->getDirection() * m_speed);
+void Animal::move(int position) {
+    m_position += (position * m_speed);
 }
+
+int Animal::getMPosition() const {
+    return m_position;
+}
+
+void Animal::setMPosition(int mPosition) {
+    m_position = mPosition;
+}
+

@@ -57,11 +57,6 @@ void FarmBase::spawnAnimal() {
 
 void FarmBase::move() {
     // TODO: move function => move naar elke animal
-<<<<<<< HEAD
-    //for each(iel in animals)
-    //Animal* yoda = new Yoda();
-    //yoda->move(this);
-=======
     int i=0;
     std::vector<Animal *>::iterator ptr;
     for (ptr = animalList.begin(); ptr < animalList.end(); ptr++)
@@ -70,7 +65,6 @@ void FarmBase::move() {
         //TextStream::instance().setText(std::to_string((*ptr)->getMPosition()), 4, (i * 6)+3);
         i++;
     }
->>>>>>> test
 }
 
 

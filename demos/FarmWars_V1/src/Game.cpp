@@ -13,14 +13,11 @@
 #include "Select.h"
 #include "../sprites/farm.h"
 #include "FarmBase.h"
-<<<<<<< HEAD
-=======
 
 int i;
 
 FarmBase * Game::myFarm = new FarmBase(1, 0);
 FarmBase * Game::aiFarm = new FarmBase(-1, 100);
->>>>>>> moving animals from base (draft)
 
 std::vector<Background *> Game::backgrounds() {
     return { bg.get() };
@@ -40,16 +37,9 @@ void Game::load() {
     bg = std::unique_ptr<Background>(new Background(1, FarmLandscapeTiles, sizeof(FarmLandscapeTiles), FarmLandscapeMap, sizeof(FarmLandscapeMap)));
     bg.get()->useMapScreenBlock(16);
 
-<<<<<<< HEAD
-    //TODO: create 2 bases
-    if (gMyFarm == nullptr) gMyFarm = new FarmBase(1, 0);
-    if (gAIFarm == nullptr) gAIFarm = new FarmBase(-1, 100);
-
-=======
     TextStream::instance().setText("Game::load", 1, 1);
     TextStream::instance().setText(std::to_string(i), 2, 1);
     i++;
->>>>>>> moving animals from base (draft)
 }
 
 void Game::tick(u16 keys) {

@@ -116,71 +116,39 @@ void Select::tick(u16 keys) {
     if(Cursor->getX() == 50) {
         if(Cursor->getY() == 50) {
             TextStream::instance().setText("That's a lama", 2, 8);
-<<<<<<< HEAD
-            gMyFarm->setAnimaltype(1);
-        }
-        else if(Cursor->getY() == 100) {
-            TextStream::instance().setText("That's a duck", 2, 8);
-            gMyFarm->setAnimaltype(2);
-=======
             Game::myFarm->setAnimaltype(1);
         }
         else if(Cursor->getY() == 100) {
             TextStream::instance().setText("That's a duck", 2, 8);
             Game::myFarm->setAnimaltype(2);
->>>>>>> moving animals from base (draft)
         }
     }
     else if(Cursor->getX() == 100) {
         if(Cursor->getY() == 50) {
             TextStream::instance().setText("That's a chicken", 2, 8);
-<<<<<<< HEAD
-            gMyFarm->setAnimaltype(3);
-        }
-        else if(Cursor->getY() == 100) {
-            TextStream::instance().setText("That's a bunny", 2, 8);
-            gMyFarm->setAnimaltype(4);
-=======
             Game::myFarm->setAnimaltype(3);
         }
         else if(Cursor->getY() == 100) {
             TextStream::instance().setText("That's a bunny", 2, 8);
             Game::myFarm->setAnimaltype(4);
->>>>>>> moving animals from base (draft)
         }
     }
     else if(Cursor->getX() == 150) {
         if(Cursor->getY() == 50) {
             TextStream::instance().setText("That's a cow", 2, 8);
-<<<<<<< HEAD
-            gMyFarm->setAnimaltype(5);
-        }
-        else if(Cursor->getY() == 100) {
-            TextStream::instance().setText("That's a Yoda", 2, 8);
-            gMyFarm->setAnimaltype(6);
-=======
             Game::myFarm->setAnimaltype(5);
         }
         else if(Cursor->getY() == 100) {
             TextStream::instance().setText("That's a Yoda", 2, 8);
             Game::myFarm->setAnimaltype(6);
->>>>>>> moving animals from base (draft)
         }
     }
 
     if(keys & KEY_A) {
         if(!engine->isTransitioning()) {
-<<<<<<< HEAD
-            //TODO: choose animal
-
-            engine->setScene(new Game(engine));
-
-            gMyFarm->spawn();
-=======
             engine->setScene(new Game(engine));
 
             Game::myFarm->spawnAnimal();
->>>>>>> moving animals from base (draft)
         }
     }
 }

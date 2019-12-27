@@ -7,10 +7,6 @@
 
 
 #include <libgba-sprite-engine/sprites/sprite.h>
-<<<<<<< HEAD
-#include "FarmBase.h"
-=======
->>>>>>> moving animals from base (draft)
 
 class Animal
 {

@@ -1,4 +1,17 @@
 
+## FarmWars tryout for UHasselt
+
+a Game has 2 FarmBases, myFarm and aiFarm (computer)
+
+1 FarmBase holds vector of animals
+
+when animal is selected it is spawned by a farm and added to the vector
+
+when the Games ticks the Farm instructs by move, to move the animals that are hold by the vector
+
+the rest comes here....
+
+
 ## A high-level object-oriented Gameboy Advance sprite engine library
 
 [![Build Status](https://travis-ci.org/wgroeneveld/gba-sprite-engine.svg?branch=master)](https://travis-ci.org/wgroeneveld/gba-sprite-engine)

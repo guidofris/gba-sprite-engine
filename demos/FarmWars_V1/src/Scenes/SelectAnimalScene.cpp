@@ -129,7 +129,7 @@ void SelectAnimalScene::tick(u16 keys) {
     }
 
     if(keys & KEY_A) {
-        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Main );
+        GameController::getInstance()->transitionIntoScene(GameController::Scenes::MainNext);
     }
 
     /*
@@ -156,4 +156,8 @@ int SelectAnimalScene::getSelectX() const {
 
 int SelectAnimalScene::getSelectY() const {
     return SelectY;
+}
+
+SelectAnimalScene::~SelectAnimalScene() {
+    engine->deleteCurrentScene() ;
 }

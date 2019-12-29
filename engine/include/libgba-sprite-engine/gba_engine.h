@@ -21,6 +21,10 @@ class GBAEngine {
 private:
     // WHY raw pointers? the engine does the transition and cleanup work itself
     Scene* currentScene;
+public:
+    void *deleteCurrentScene() const;
+
+private:
     Scene* sceneToTransitionTo;
     SceneEffect* currentEffectForTransition;
 

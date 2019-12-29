@@ -157,7 +157,7 @@ void GBAEngine::cleanupPreviousScene()  {
         bg->clearData();
     }
 
-    delete currentScene;
+    //delete currentScene;
     sceneToTransitionTo = nullptr;
     delete currentEffectForTransition;
     currentEffectForTransition = nullptr;
@@ -202,4 +202,8 @@ void GBAEngine::updateSpritesInScene() {
     Allocator::free();
     spriteManager.set(currentScene->sprites());
     spriteManager.persist();
+}
+
+void *GBAEngine::deleteCurrentScene() const {
+    delete currentScene;
 }

@@ -41,24 +41,27 @@ void GameController::transitionIntoScene(GameController::Scenes scene) {
         case Scenes::Intro :
             introScene = new IntroScene(_engine);
             _engine.get()->setScene(introScene);
-            currentScene = introScene;
+            //currentScene = introScene;
             break;
         case Scenes::Main :
-            mainScene = new MainScene(_engine);
+            mainScene_First = new MainScene(_engine);
             //if (!_engine.get()->isTransitioning()) _engine.get()->setScene(mainScene);
-            _engine->transitionIntoScene(mainScene, new FadeOutScene(10));
-            currentScene = mainScene;
+            _engine->transitionIntoScene(mainScene_First, new FadeOutScene(10));
+            currentScene = mainScene_First;
+            break;
+        case Scenes::MainNext :
+            //mainScene_Next = new MainScene(_engine);
+            //if (!_engine.get()->isTransitioning()) _engine.get()->setScene(mainScene);
+            _engine->setScene(currentScene);
+            //currentScene = mainScene_Next;
             break;
         case Scenes::Select :
             selectAnimalScene = new SelectAnimalScene(_engine);
             //if (!_engine.get()->isTransitioning()) _engine.get()->setScene(selectAnimalScene);
             //_engine.get()->setScene(selectAnimalScene);
-            _engine->transitionIntoScene(selectAnimalScene, new FadeOutScene(10));
-            currentScene = selectAnimalScene;
+            _engine->setScene(selectAnimalScene);
             break;
     }
-
-
 
 }
 

@@ -12,15 +12,15 @@ class MainScene : public Scene {
 private:
     std::shared_ptr<int> Spawn ;
 
-    std::unique_ptr<Background> bg_current;
+    std::shared_ptr<Background> bg_current;
 
-    std::unique_ptr<Background> bg_moon;
+    std::shared_ptr<Background> bg_moon;
     double bg_moon_x = 0;
 
-    std::unique_ptr<Background> bg_mountain;
+    std::shared_ptr<Background> bg_mountain;
     double bg_mountain_x = 0;
 
-    std::unique_ptr<Background> bg_flowers;
+    std::shared_ptr<Background> bg_flowers;
     double bg_flowers_x = 0;
 
     int selectMode = 0;
@@ -34,7 +34,7 @@ public:
     void load() override;
     void tick(u16 keys) override;
 
-    std::vector<std::unique_ptr<Animal>> animals;
+    std::vector<std::shared_ptr<Animal>> animals;
 };
 
 

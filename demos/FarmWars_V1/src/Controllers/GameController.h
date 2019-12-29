@@ -19,17 +19,16 @@ public:
     void Init(std::shared_ptr<GBAEngine> engine);
 
     IntroScene* introScene;
-    MainScene* mainScene;
+    MainScene* mainScene_First;
     SelectAnimalScene* selectAnimalScene;
 
-    Scene*  currentScene;
-
-    enum Scenes { Intro, Main, Select };
+    enum Scenes { Intro, Main, MainNext, Select };
 
     void transitionIntoScene (Scenes scenes);
 
 private:
     static GameController* instance;
+    Scene*  currentScene;
 
     /* Private constructor to prevent instancing. */
 

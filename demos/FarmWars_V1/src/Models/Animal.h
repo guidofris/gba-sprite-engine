@@ -27,8 +27,8 @@ private:
      *  VECTOR dest;
      */
 
-    std::unique_ptr<Sprite> sprite;
-    std::unique_ptr<SpriteBuilder<Sprite>> spriteBuilder;
+    std::shared_ptr<Sprite> sprite;
+    std::shared_ptr<SpriteBuilder<Sprite>> spriteBuilder;
 
     bool isInit = 0;
 

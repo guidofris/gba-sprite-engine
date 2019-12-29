@@ -11,6 +11,10 @@ class SelectAnimalScene : public Scene {
 private:
     std::unique_ptr<Sprite> Lama ;
     std::unique_ptr<Sprite> Eend ;
+public:
+    virtual ~SelectAnimalScene();
+
+private:
     std::unique_ptr<Sprite> Kip ;
     std::unique_ptr<Sprite> Konijn ;
     std::unique_ptr<Sprite> Koe ;
@@ -18,7 +22,7 @@ private:
     std::unique_ptr<Sprite> Cursor ;
     int SelectX = 50;
     int SelectY = 50;
-    std::shared_ptr<int> Spawn ;
+    //std::shared_ptr<int> Spawn ;
 
 public:
     int getSelectX() const;

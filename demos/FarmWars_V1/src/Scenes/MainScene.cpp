@@ -46,11 +46,11 @@ void MainScene::load() {
     bg_moon = std::unique_ptr<Background>(new Background(1, bg_moonTiles, sizeof(bg_moonTiles), bg_moonMap, sizeof(bg_moonMap)));
     bg_moon.get()->useMapScreenBlock(16);
 
-    /*
+
     bg_mountain = std::unique_ptr<Background>(new Background(2, bg_mountainTiles, sizeof(bg_mountainTiles), bg_mountainMap, sizeof(bg_mountainMap)));
     bg_mountain.get()->useMapScreenBlock(16);
-    bg_current = std::move(bg_moon);
-     */
+    //bg_current = std::move(bg_moon);
+
 
     /*
     TextStream::instance().setText("MainScene::load", 1, 1);
@@ -84,9 +84,12 @@ void MainScene::tick(u16 keys) {
        // b->tick();
     }
 
-    /*
-    if(keys & KEY_R) {
-        //GameController::getInstance()->transitionIntoScene(GameController::Scenes::Select);
+
+    if(keys & KEY_SELECT) {
+        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Select);
+    }
+
+        /*
         for(auto& b : animals) {
             b->setDestination(2000 );
             b->tick();

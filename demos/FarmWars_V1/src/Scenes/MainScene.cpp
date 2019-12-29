@@ -84,14 +84,13 @@ void MainScene::tick(u16 keys) {
        // b->tick();
     }
 
-    /*
-    if(keys & KEY_R) {
-        //GameController::getInstance()->transitionIntoScene(GameController::Scenes::Select);
+    if(keys & KEY_SELECT) {
         for(auto& b : animals) {
-            b->setDestination(2000 );
-            b->tick();
+            b->getSprite()->stopAnimating();
         }
+        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Select);
     }
+        /*
     if(keys & KEY_L) {
         for(auto& b : animals) {
             b->setDestination(0 );

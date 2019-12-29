@@ -33,7 +33,7 @@ void ConwaySeeder::load() {
             .withLocation(GBA_SCREEN_WIDTH - 40, 8)
             .buildPtr();
 
-    TextStream::instance().setText(std::string("Conways Select of Life"), 1, 1);
+    TextStream::instance().setText(std::string("Conways SelectAnimalScene of Life"), 1, 1);
     TextStream::instance().setText(std::string("Up/Down to adjust seed"), 10, 1);
     TextStream::instance().setText(std::string("A/B to adjust impl"), 11, 1);
     TextStream::instance().setText(std::string("Start to render"), 12, 1);

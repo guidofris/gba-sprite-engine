@@ -12,13 +12,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bf00b7c-1ecc-4450-8b1f-f48dc38e7955" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sprites/bg_moon.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/bg_moon.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/bg_mountain.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/bg_mountain.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/bg_shared.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sprites/bg_shared.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/GameController.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controllers/GameController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Scenes/MainScene.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Scenes/MainScene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animal.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animal.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animal.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animal.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Select.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Select.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/lama.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/lama.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprites/farm.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprites/startscreen.h" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/startscreen.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animal.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Animal.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animal.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Animal.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CloseCombat.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CloseCombat.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Damage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Damage.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FarmBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Farm.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FarmBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Farm.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Health.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Health.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scenes/IntroScene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scenes/IntroScene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Range.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Range.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Select.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scenes/SelectAnimalScene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Select.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scenes/SelectAnimalScene.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo2-arkanoid/src/arkanoid_game_scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/../demo2-arkanoid/src/arkanoid_game_scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo3-foodthrowing/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../demo3-foodthrowing/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo4-conway/src/ConwaySeeder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../demo4-conway/src/ConwaySeeder.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +107,9 @@
       <option name="presentableId" value="Default" />
       <updated>1577482669201</updated>
       <workItem from="1577482670394" duration="57000" />
+      <workItem from="1577566609879" duration="47000" />
+      <workItem from="1577566669790" duration="13000" />
+      <workItem from="1577566723518" duration="46000" />
     </task>
     <servers />
   </component>
@@ -88,7 +121,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

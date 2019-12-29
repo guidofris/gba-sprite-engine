@@ -2,23 +2,32 @@ project(FarmWars)
 
 add_executable(${PROJECT_NAME}.elf
         src/main.cpp
-        src/Menu.cpp
-        src/Menu.h
+        src/Models/Animal.cpp
+        src/Models/Animal.h
+        src/Controllers/GameController.h
+        src/Controllers/GameController.cpp
+        src/Scenes/SelectAnimalScene.cpp
+        src/Scenes/SelectAnimalScene.h
+        src/Scenes/IntroScene.cpp
+        src/Scenes/IntroScene.h
+        src/Scenes/MainScene.cpp
+        src/Scenes/MainScene.h
+        sprites/startscreen.h
+        sprites/bg_shared.h
+        sprites/bg_shared.c
+        sprites/bg_mountain.h
+        sprites/bg_mountain.c
+        sprites/bg_moon.h
+        sprites/bg_moon.c
+        sprites/select_sprite.h
+        sprites/yoda_sprite.h
         sprites/lama_sprite.h
-        src/Select.cpp
-        src/Select.h
-        src/FarmBase.cpp
-        src/FarmBase.h
-        src/Animal.cpp
-        src/Animal.h
-        src/Damage.cpp
-        src/Damage.h
-        src/Health.cpp
-        src/Health.h
-        src/Range.cpp
-        src/Range.h
-        src/CloseCombat.cpp
-        src/CloseCombat.h sprites/startscreen.h sprites/yoda_sprite.h sprites/select_sprite.h src/Game.cpp src/Game.h sprites/farm.h)
+        sprites/eend_sprite.h
+        sprites/konijn_sprite.h
+        sprites/koe_sprite.h
+        sprites/kip_sprite.h
+        sprites/sharedpal.h
+        src/main.h)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
 

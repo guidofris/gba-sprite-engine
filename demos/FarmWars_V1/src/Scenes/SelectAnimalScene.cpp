@@ -2,35 +2,18 @@
 // Created by Guido Frissaer on 05/12/2019.
 //
 
-#include <libgba-sprite-engine/sprites/sprite_builder.h>
-#include <libgba-sprite-engine/background/text_stream.h>
-#include <libgba-sprite-engine/gba/tonc_memdef.h>
-#include <libgba-sprite-engine/gba_engine.h>
-#include <libgba-sprite-engine/effects/fade_out_scene.h>
-#include "Menu.h"
-#include "Select.h"
-#include "Game.h"
+#include "../main.h"
 
-#include "../sprites/lama_sprite.h"
-#include "../sprites/eend_sprite.h"
-#include "../sprites/kip_sprite.h"
-#include "../sprites/konijn_sprite.h"
-#include "../sprites/startscreen.h"
-#include "../sprites/koe_sprite.h"
-#include "../sprites/yoda_sprite.h"
-#include "../sprites/select_sprite.h"
-#include "../sprites/sharedpal.h"
-#include "FarmBase.h"
 
-std::vector<Background *> Select::backgrounds() {
+std::vector<Background *> SelectAnimalScene::backgrounds() {
     return {};
 }
 
-std::vector<Sprite *> Select::sprites() {
+std::vector<Sprite *> SelectAnimalScene::sprites() {
     return { Cursor.get(), Lama.get(), Konijn.get(), Koe.get(), Kip.get(), Eend.get(), Yoda.get() };
 }
 
-void Select::load() {
+void SelectAnimalScene::load() {
 
     foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(sharedPal, sizeof(sharedPal)));
     //backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(FarmWarResizedPal, sizeof(FarmWarResizedPal)));
@@ -86,7 +69,8 @@ void Select::load() {
             .buildPtr();
 }
 
-void Select::tick(u16 keys) {
+void SelectAnimalScene::tick(u16 keys) {
+
     bool Control = TRUE ;
 
     if(keys & KEY_LEFT && Control && Cursor->getX() > 50) {
@@ -116,55 +100,60 @@ void Select::tick(u16 keys) {
     if(Cursor->getX() == 50) {
         if(Cursor->getY() == 50) {
             TextStream::instance().setText("That's a lama", 2, 8);
-            Game::myFarm->setAnimaltype(1);
+            //MainScene::myFarm->setAnimaltype(1);
         }
         else if(Cursor->getY() == 100) {
             TextStream::instance().setText("That's a duck", 2, 8);
-            Game::myFarm->setAnimaltype(2);
+            //MainScene::myFarm->setAnimaltype(2);
         }
     }
     else if(Cursor->getX() == 100) {
         if(Cursor->getY() == 50) {
             TextStream::instance().setText("That's a chicken", 2, 8);
-            Game::myFarm->setAnimaltype(3);
+            //MainScene::myFarm->setAnimaltype(3);
         }
         else if(Cursor->getY() == 100) {
             TextStream::instance().setText("That's a bunny", 2, 8);
-            Game::myFarm->setAnimaltype(4);
+            //MainScene::myFarm->setAnimaltype(4);
         }
     }
     else if(Cursor->getX() == 150) {
         if(Cursor->getY() == 50) {
             TextStream::instance().setText("That's a cow", 2, 8);
-            Game::myFarm->setAnimaltype(5);
+            //MainScene::myFarm->setAnimaltype(5);
         }
         else if(Cursor->getY() == 100) {
             TextStream::instance().setText("That's a Yoda", 2, 8);
-            Game::myFarm->setAnimaltype(6);
+            //MainScene::myFarm->setAnimaltype(6);
         }
     }
 
     if(keys & KEY_A) {
-        if(!engine->isTransitioning()) {
-            engine->setScene(new Game(engine));
-
-            Game::myFarm->spawnAnimal();
-        }
+        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Main );
     }
+
+    /*
+        if(!engine->isTransitioning()) {
+            engine->setScene(new MainScene(engine));
+
+            MainScene::myFarm->spawnAnimal();
+        }
+    */
+
 }
 
-void Select::setSelectX(int selectX) {
+void SelectAnimalScene::setSelectX(int selectX) {
     SelectX = selectX;
 }
 
-void Select::setSelectY(int selectY) {
+void SelectAnimalScene::setSelectY(int selectY) {
     SelectY = selectY;
 }
 
-int Select::getSelectX() const {
+int SelectAnimalScene::getSelectX() const {
     return SelectX;
 }
 
-int Select::getSelectY() const {
+int SelectAnimalScene::getSelectY() const {
     return SelectY;
 }

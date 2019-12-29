@@ -2,13 +2,12 @@
 // Created by Guido Frissaer on 05/12/2019.
 //
 
-#ifndef GBA_SPRITE_ENGINE_PROJECT_SELECT_H
-#define GBA_SPRITE_ENGINE_PROJECT_SELECT_H
+#ifndef GBA_SPRITE_ENGINE_PROJECT_SELECTANIMALSCENE_H
+#define GBA_SPRITE_ENGINE_PROJECT_SELECTANIMALSCENE_H
 
-#include <libgba-sprite-engine/scene.h>
-#include "Game.h"
+#include "../main.h"
 
-class Select : public Scene {
+class SelectAnimalScene : public Scene {
 private:
     std::unique_ptr<Sprite> Lama ;
     std::unique_ptr<Sprite> Eend ;
@@ -30,11 +29,11 @@ public:
     std::vector<Sprite *> sprites() override;
     std::vector<Background *> backgrounds() override;
 
-    Select(std::shared_ptr<GBAEngine> engine) : Scene(engine) {}
+    SelectAnimalScene(std::shared_ptr<GBAEngine> engine) : Scene(engine) {}
 
     void load() override;
     void tick(u16 keys) override;
 };
 
 
-#endif //GBA_SPRITE_ENGINE_PROJECT_SELECT_H
+#endif //GBA_SPRITE_ENGINE_PROJECT_SELECTANIMALSCENE_H

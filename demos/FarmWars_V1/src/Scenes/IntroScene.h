@@ -2,12 +2,14 @@
 // Created by Guido Frissaer on 05/12/2019.
 //
 
-#ifndef GBA_SPRITE_ENGINE_PROJECT_MENU_H
-#define GBA_SPRITE_ENGINE_PROJECT_MENU_H
+#ifndef GBA_SPRITE_ENGINE_PROJECT_INTROSCENE_H
+#define GBA_SPRITE_ENGINE_PROJECT_INTROSCENE_H
 
-#include <libgba-sprite-engine/scene.h>
+#include "../main.h"
 
-class Menu : public Scene {
+
+
+class IntroScene : public Scene {
 private:
     bool pressingAorB = false;
     std::unique_ptr<Background> bg;
@@ -16,11 +18,11 @@ public:
     std::vector<Sprite *> sprites() override;
     std::vector<Background *> backgrounds() override;
 
-    Menu(std::shared_ptr<GBAEngine> engine) : Scene(engine) {}
+    IntroScene(std::shared_ptr<GBAEngine> engine) : Scene(engine) { }
 
     void load() override;
     void tick(u16 keys) override;
 };
 
 
-#endif //GBA_SPRITE_ENGINE_PROJECT_MENU_H
+#endif //GBA_SPRITE_ENGINE_PROJECT_INTROSCENE_H

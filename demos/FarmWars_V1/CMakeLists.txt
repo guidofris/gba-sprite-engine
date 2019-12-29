@@ -27,7 +27,7 @@ add_executable(${PROJECT_NAME}.elf
         sprites/koe_sprite.h
         sprites/kip_sprite.h
         sprites/sharedpal.h
-        src/main.h)
+        src/main.h src/Models/AnimalStats.cpp src/Models/AnimalStats.h src/Models/FarmStats.cpp src/Models/FarmStats.h)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)
 

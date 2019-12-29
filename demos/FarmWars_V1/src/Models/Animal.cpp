@@ -35,34 +35,6 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
 
     switch( type )
     {
-        case AnimalType::duck:
-            sprite = spriteBuilder
-                    ->withData(eendTiles, sizeof(eendTiles))
-                    .withSize(SIZE_32_32)
-                    .withAnimated(2, 15)
-                    .withLocation(32, 133)
-                    .buildPtr();
-
-            break;
-
-        case AnimalType::cow:
-            sprite = spriteBuilder
-                    ->withData(koeTiles, sizeof(koeTiles))
-                    .withSize(SIZE_32_32)
-                    .withAnimated(2, 15)
-                    .withLocation(-32, 131)
-                    .buildPtr();
-            break;
-
-        case AnimalType::lama:
-            sprite = spriteBuilder
-                    ->withData(lamaTiles, sizeof(lamaTiles))
-                    .withSize(SIZE_32_32)
-                    .withAnimated(2, 15)
-                    .withLocation(240, 127)
-                    .buildPtr();
-            break;
-
         case AnimalType::rabbit:
             sprite = spriteBuilder
                     ->withData(konijnTiles, sizeof(konijnTiles))
@@ -70,6 +42,8 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                     .withAnimated(2, 15)
                     .withLocation(-32, 135)
                     .buildPtr();
+
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(10,10,10,12));
             break;
 
         case AnimalType::chicken:
@@ -79,6 +53,41 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                     .withAnimated(2, 15)
                     .withLocation(-32, 135)
                     .buildPtr();
+
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(20,20,20,24));
+            break;
+
+        case AnimalType::duck:
+            sprite = spriteBuilder
+                    ->withData(eendTiles, sizeof(eendTiles))
+                    .withSize(SIZE_32_32)
+                    .withAnimated(2, 15)
+                    .withLocation(32, 133)
+                    .buildPtr();
+
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(40,40,40,48));
+            break;
+
+        case AnimalType::cow:
+            sprite = spriteBuilder
+                    ->withData(koeTiles, sizeof(koeTiles))
+                    .withSize(SIZE_32_32)
+                    .withAnimated(2, 15)
+                    .withLocation(-32, 131)
+                    .buildPtr();
+
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(60,60,60,72));
+            break;
+
+        case AnimalType::lama:
+            sprite = spriteBuilder
+                    ->withData(lamaTiles, sizeof(lamaTiles))
+                    .withSize(SIZE_32_32)
+                    .withAnimated(2, 15)
+                    .withLocation(240, 127)
+                    .buildPtr();
+
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(80,80,80,96));
             break;
 
         case AnimalType::yoda:
@@ -88,6 +97,8 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                            .withAnimated(2, 15)
                            .withLocation(-32, 127)
                            .buildPtr();
+
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(100,100,100,120));
             break;
     }
 

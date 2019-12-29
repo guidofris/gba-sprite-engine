@@ -2,6 +2,7 @@
 #define GBA_SPRITE_ENGINE_PROJECT_BULLET_H
 
 #include <deque>
+#include "AnimalStats.h"
 
 class Animal {
 
@@ -29,6 +30,7 @@ private:
 
     std::shared_ptr<Sprite> sprite;
     std::shared_ptr<SpriteBuilder<Sprite>> spriteBuilder;
+    std::shared_ptr<AnimalStats> stats;
 
     bool isInit = 0;
 

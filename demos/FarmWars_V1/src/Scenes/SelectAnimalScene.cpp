@@ -100,31 +100,36 @@ void SelectAnimalScene::tick(u16 keys) {
     if(Cursor->getX() == 50) {
         if(Cursor->getY() == 50) {
             TextStream::instance().setText("That's a lama", 2, 8);
-            //MainScene::myFarm->setAnimaltype(1);
+            GameController::getInstance()->userFarm->addAnimal(Animal::lama,Animal::AnimalDirection::right,1);
         }
         else if(Cursor->getY() == 100) {
             TextStream::instance().setText("That's a duck", 2, 8);
-            //MainScene::myFarm->setAnimaltype(2);
+            GameController::getInstance()->userFarm->addAnimal(Animal::duck,Animal::AnimalDirection::right,1);
         }
     }
     else if(Cursor->getX() == 100) {
         if(Cursor->getY() == 50) {
             TextStream::instance().setText("That's a chicken", 2, 8);
-            //MainScene::myFarm->setAnimaltype(3);
+            GameController::getInstance()->userFarm->addAnimal(Animal::chicken,Animal::AnimalDirection::right,1);
         }
         else if(Cursor->getY() == 100) {
-            TextStream::instance().setText("That's a bunny", 2, 8);
-            //MainScene::myFarm->setAnimaltype(4);
+            TextStream::instance().setText("That's a rabbit", 2, 8);
+            GameController::getInstance()->userFarm->addAnimal(Animal::rabbit,Animal::AnimalDirection::right,1);
         }
     }
     else if(Cursor->getX() == 150) {
         if(Cursor->getY() == 50) {
             TextStream::instance().setText("That's a cow", 2, 8);
-            //MainScene::myFarm->setAnimaltype(5);
+            GameController::getInstance()->userFarm->addAnimal(Animal::cow,Animal::AnimalDirection::right,1);
         }
         else if(Cursor->getY() == 100) {
             TextStream::instance().setText("That's a Yoda", 2, 8);
-            //MainScene::myFarm->setAnimaltype(6);
+            //TODO: remove velocity
+            //GameController::getInstance()->userFarm->addAnimal(Animal::yoda,Animal::AnimalDirection::right,1);
+
+            //std::unique_ptr<Animal> yoda = std::unique_ptr<Animal>(new Animal(Animal::yoda,Animal::AnimalDirection::right,1));
+            //GameController::getInstance()->userFarm->animals.push_back(std::move(yoda));
+
         }
     }
 

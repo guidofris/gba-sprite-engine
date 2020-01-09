@@ -11,6 +11,7 @@ public:
     enum AnimalDirection { left, right };
 
     Animal(AnimalType type, AnimalDirection direction, int velocity );
+    Animal(Sprite *pSprite, AnimalType type, AnimalDirection direction, int i);
 
     void init();
     void tick();
@@ -35,6 +36,10 @@ private:
     bool isInit = 0;
 
     AnimalType type;
+public:
+    AnimalType getType() const;
+
+private:
     AnimalDirection direction;
     int velocity;
 };

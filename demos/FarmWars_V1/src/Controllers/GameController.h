@@ -9,6 +9,7 @@
 #include "../Scenes/IntroScene.h"
 #include "../Scenes/MainScene.h"
 #include "../Scenes/SelectAnimalScene.h"
+#include "../Models/Farm.h"
 
 class GameController {
 public:
@@ -25,6 +26,9 @@ public:
     enum Scenes { Intro, Main, MainNext, Select };
 
     void transitionIntoScene (Scenes scenes);
+
+    std::unique_ptr<Farm> userFarm = std::unique_ptr<Farm>(new Farm());
+    std::unique_ptr<Farm> cpuFarm = std::unique_ptr<Farm>(new Farm());
 
 private:
     static GameController* instance;

@@ -35,5 +35,9 @@
 #include "../sprites/bg_shared.h"
 
 #include "Models/Animal.h"
+#include "Models/AnimalStats.h"
+#include "Models/Farm.h"
+#include "Models/FarmStats.h"
+
 
 #endif //GBA_SPRITE_ENGINE_PROJECT_MAIN_H

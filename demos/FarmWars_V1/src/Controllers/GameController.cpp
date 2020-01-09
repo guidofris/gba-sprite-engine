@@ -33,6 +33,9 @@ void GameController::Init(std::shared_ptr<GBAEngine> engine) {
     introScene = nullptr;
 
     transitionIntoScene(Scenes::Intro);
+
+
+
 }
 
 void GameController::transitionIntoScene(GameController::Scenes scene) {

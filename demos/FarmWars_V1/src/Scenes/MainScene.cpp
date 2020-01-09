@@ -4,36 +4,27 @@
 
 
 #include "../main.h"
-#include "MainScene.h"
 
-
-const int floor = 127;
 int i;
+
+MainScene::MainScene(std::shared_ptr<GBAEngine> engine) : Scene(engine) {
+
+}
+
 
 std::vector<Background *> MainScene::backgrounds() {
     return { bg_moon.get(), /*bg_mountain.get()*/ };
 }
 
 std::vector<Sprite *> MainScene::sprites() {
-    /*
-    if (Yoda) return { Yoda->getSprite() };
 
-    return {};
-    */
-
-    if (selectMode == 1)
-    {
-        return {};
-    }
-    else
-    {
         std::vector<Sprite*> sprites;
-        for(auto& b : animals) {
-            sprites.push_back(b->getSprite());
-        }
-        return sprites;
-    }
 
+       for(auto& b : GameController::getInstance()->userFarm->animals) {
+                sprites.push_back(b->getSprite());
+        }
+
+        return sprites;
 }
 
 void MainScene::load() {
@@ -58,31 +49,35 @@ void MainScene::load() {
     i++;
      */
 
-    std::unique_ptr<Animal> yoda = std::unique_ptr<Animal>(new Animal(Animal::yoda,Animal::AnimalDirection::right,1));
+    /*
     std::unique_ptr<Animal> cow = std::unique_ptr<Animal>(new Animal(Animal::cow,  Animal::AnimalDirection::right, 2) );
     std::unique_ptr<Animal> rabbit = std::unique_ptr<Animal>(new Animal(Animal::rabbit,  Animal::AnimalDirection::right, 4) );
-
     std::unique_ptr<Animal> duck = std::unique_ptr<Animal>(new Animal(Animal::duck,  Animal::AnimalDirection::left, 1)  );
     std::unique_ptr<Animal> lama = std::unique_ptr<Animal>(new Animal(Animal::lama,  Animal::AnimalDirection::left, 2) );
     std::unique_ptr<Animal> chicken = std::unique_ptr<Animal>(new Animal(Animal::chicken,  Animal::AnimalDirection::left, 3) );
 
-    animals.push_back(std::move(cow));
     animals.push_back(std::move(yoda));
     animals.push_back(std::move(rabbit));
     animals.push_back(std::move(duck));
     animals.push_back(std::move(lama));
     animals.push_back(std::move(chicken));
+     */
 
     //yoda->getSprite()->stopAnimating();
 
 }
 
+int animalSelection = 0;
+u16 oldKey;
 void MainScene::tick(u16 keys) {
-
-    for(auto& b : animals) {
+    i = 0;
+    for(auto& b : GameController::getInstance()->userFarm->animals) {
+        i++;
         b->init();
        // b->tick();
     }
+    TextStream::instance().setText(std::to_string(i), 2, 1);
+
 
     if(keys & KEY_SELECT) {
         for(auto& b : animals) {
@@ -90,6 +85,47 @@ void MainScene::tick(u16 keys) {
         }
         GameController::getInstance()->transitionIntoScene(GameController::Scenes::Select);
     }
+
+    if (keys & KEY_START) {
+        oldKey = keys;
+    }
+
+    if (!keys && oldKey )
+    {
+        oldKey = 0;
+        animalSelection++;
+        TextStream::instance().setText(std::to_string(animalSelection), 3, 1);
+
+        switch (animalSelection)
+        {
+            case 1:
+                GameController::getInstance()->userFarm->addAnimal(Animal::rabbit,Animal::AnimalDirection::right,1);
+                break;
+            case 2:
+                GameController::getInstance()->userFarm->addAnimal(Animal::duck,Animal::AnimalDirection::right,2);
+                break;
+            case 3:
+                GameController::getInstance()->userFarm->addAnimal(Animal::yoda, Animal::AnimalDirection::right,1);
+                break;
+            case 4:
+                GameController::getInstance()->userFarm->addAnimal(Animal::chicken,Animal::AnimalDirection::right,2);
+                break;
+            case 5:
+                GameController::getInstance()->userFarm->addAnimal(Animal::cow,Animal::AnimalDirection::right,3);
+                break;
+            case 6:
+                GameController::getInstance()->userFarm->addAnimal(Animal::lama,Animal::AnimalDirection::right,1);
+                break;
+            default:
+                animalSelection = 0;
+
+        }
+        engine.get()->updateSpritesInScene();
+    }
+/*
+
+
+    */
         /*
     if(keys & KEY_L) {
         for(auto& b : animals) {
@@ -133,9 +169,5 @@ void MainScene::tick(u16 keys) {
     }
     tickCounter++;
 */
-}
-
-MainScene::MainScene(std::shared_ptr<GBAEngine> engine) : Scene(engine) {
-
 }
 

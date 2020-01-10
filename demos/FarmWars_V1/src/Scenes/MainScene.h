@@ -25,6 +25,9 @@ private:
 
     int selectMode = 0;
 
+    std::unique_ptr<Sprite> Base ;
+    std::unique_ptr<Sprite> EnemyBase ;
+
 public:
     std::vector<Sprite *> sprites() override;
     std::vector<Background *> backgrounds() override;

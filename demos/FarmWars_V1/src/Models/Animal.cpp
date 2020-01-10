@@ -31,7 +31,7 @@ void Animal::tick() {
 
 Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(type), direction(direction), velocity(velocity) {
 
-    spriteBuilder = std::unique_ptr<SpriteBuilder<Sprite>>(new SpriteBuilder<Sprite>);
+    //spriteBuilder = std::unique_ptr<SpriteBuilder<Sprite>>(new SpriteBuilder<Sprite>);
 
     switch( type )
     {
@@ -73,7 +73,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                     ->withData(koeTiles, sizeof(koeTiles))
                     .withSize(SIZE_32_32)
                     .withAnimated(2, 15)
-                    .withLocation(-0, 131)
+                    .withLocation(0, 131)
                     .buildPtr();
 
             stats = std::unique_ptr<AnimalStats>(new AnimalStats(60,60,60,72));
@@ -95,7 +95,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                            ->withData(yodaTiles, sizeof(yodaTiles))
                            .withSize(SIZE_32_32)
                            .withAnimated(2, 15)
-                           .withLocation(-0, 127)
+                           .withLocation(0, 127)
                            .buildPtr();
 
             stats = std::unique_ptr<AnimalStats>(new AnimalStats(100,100,100,120));

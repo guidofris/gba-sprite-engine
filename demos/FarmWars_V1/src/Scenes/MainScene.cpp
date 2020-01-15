@@ -4,8 +4,6 @@
 
 
 #include "../main.h"
-#include "../../sprites/turret.h"
-#include "../../sprites/shared.h"
 
 int i;
 
@@ -35,11 +33,14 @@ std::vector<Sprite *> MainScene::sprites() {
 void MainScene::load() {
 
     foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(
-            new ForegroundPaletteManager(sharedPal2, sizeof(sharedPal2)));
+            new ForegroundPaletteManager(sharedPal, sizeof(sharedPal)));
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(
             new BackgroundPaletteManager(bg_sharedPal, sizeof(bg_sharedPal)));
 
+    engine->enqueueMusic(Skyrim,Skyrim_bytes);
+
     SpriteBuilder<Sprite> builder;
+
 
     bg_moon = std::unique_ptr<Background>(
             new Background(1, bg_moonTiles, sizeof(bg_moonTiles), bg_moonMap, sizeof(bg_moonMap)));
@@ -47,25 +48,24 @@ void MainScene::load() {
 
 
     bg_mountain = std::unique_ptr<Background>(
-            new Background(2, bg_mountainTiles, sizeof(bg_mountainTiles), bg_mountainMap, sizeof(bg_mountainMap)));
+            new Background(1, bg_mountainTiles, sizeof(bg_mountainTiles), bg_mountainMap, sizeof(bg_mountainMap)));
     bg_mountain.get()->useMapScreenBlock(16);
     //bg_current = std::move(bg_moon);
 
     Base = builder
-            .withData(turretTiles, sizeof(turretTiles))
-            .withSize(SIZE_32_32)
-            .withAnimated(2, 50)
-            .withLocation(0, 130)
+            .withData(pixelFarmTiles, sizeof(pixelFarmTiles))
+            .withSize(SIZE_64_64)
+            .withAnimated(1,0)
+            .withLocation(2, 94)
             .buildPtr();
 
     EnemyBase = builder
-            .withData(turretTiles, sizeof(turretTiles))
-            .withSize(SIZE_32_32)
-            .withAnimated(2, 50)
-            .withLocation(240, 130)
+            .withData(pixelFarmTiles, sizeof(pixelFarmTiles))
+            .withSize(SIZE_64_64)
+            .withAnimated(1,0)
+            .withLocation(160, 94)
             .buildPtr();
 
-    EnemyBase->flipVertically(true);
 
     /*
     TextStream::instance().setText("MainScene::load", 1, 1);
@@ -96,6 +96,12 @@ u16 oldKey;
 
 void MainScene::tick(u16 keys) {
     i = 0;
+    if (!_initialized)
+    {
+        EnemyBase->flipHorizontally(true);
+        _initialized = true;
+        //Base.get()->setVelocity( -1, 0);
+    }
     for (auto &b : GameController::getInstance()->userFarm->animals) {
         i++;
         b->init();
@@ -167,9 +173,27 @@ if(keys & KEY_L) {
         bg_moon_x -= 1;
         bg_mountain_x -= 3;
     }
-    bg_moon_x += 0.1;
+    //bg_moon_x += 0.1;
     bg_moon.get()->scroll((int) bg_moon_x, 0);
+    Base.get()->moveTo((int) bg_moon_x*(-1), 94);
+    EnemyBase.get()->moveTo((int) bg_moon_x*(-1)+416, 94);
 
+    for (auto &animal : GameController::getInstance()->userFarm->animals) {
+        if (animal.get()->getSprite()->collidesWith(*EnemyBase.get()))
+        {
+            TextStream::instance().setText("yes", 4, 1);
+            //TODO update stats
+            //TODO remove and hide animal from vector
+            //animal.get()->getSprite().
+        }
+        else
+        {
+            TextStream::instance().setText("", 4, 1);
+        }
+    }
+
+
+    //EnemyBase
 
 
 //    bg_mountain.get()->scroll((int)bg_mountain_x, 0);

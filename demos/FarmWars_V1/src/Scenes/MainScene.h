@@ -25,6 +25,11 @@ private:
 
     int selectMode = 0;
 
+    bool _initialized = false;
+
+    int _xPositionOfBase = 100;
+    int _xPositionOfEnemyBase = 0;
+
     std::unique_ptr<Sprite> Base ;
     std::unique_ptr<Sprite> EnemyBase ;
 

@@ -11,7 +11,7 @@ mv -Force bg_mountain.c ../sprites/bg_mountain.c
 mv -Force bg_shared.c ../sprites/bg_shared.c
 mv -Force bg_shared.h ../sprites/bg_shared.h
 
-grit.exe eend.png kip.png koe.png konijn.png lama.png yoda.png select.png turret.png -ftc -pS -gB8 -O shared.c
+grit.exe eend.png kip.png koe.png konijn.png lama.png yoda.png select.png turret.png pixelFarm.png -ftc -pS -gB8 -O shared
 mv -Force eend.c ../sprites/eend.c
 mv -Force eend.h ../sprites/eend.h
 
@@ -35,6 +35,9 @@ mv -Force select.h ../sprites/select.h
 
 mv -Force turret.c ../sprites/turret.c
 mv -Force turret.h ../sprites/turret.h
+
+mv -Force pixelFarm.c ../sprites/pixelFarm.c
+mv -Force pixelFarm.h ../sprites/pixelFarm.h
 
 mv -Force shared.c ../sprites/shared.c
 mv -Force shared.h ../sprites/shared.h

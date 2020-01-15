@@ -17,27 +17,32 @@
 
 #include <libgba-sprite-engine/gba/tonc_memdef.h>
 
-#include "../sprites/lama_sprite.h"
-#include "../sprites/eend_sprite.h"
-#include "../sprites/kip_sprite.h"
-#include "../sprites/konijn_sprite.h"
-#include "../sprites/koe_sprite.h"
-#include "../sprites/yoda_sprite.h"
-#include "../sprites/select_sprite.h"
-#include "../sprites/sharedpal.h"
+#include "../sprites/lama.c"
+#include "../sprites/eend.c"
+#include "../sprites/kip.c"
+#include "../sprites/konijn.c"
+#include "../sprites/koe.c"
+#include "../sprites/yoda.c"
+#include "../sprites/select.c"
+#include "../sprites/turret.c"
+#include "../sprites/pixelFarm.c"
+
+#include "../sprites/shared.c"
 
 #include "Controllers/GameController.h"
 
 #include "../sprites/startscreen.h"
 
-#include "../sprites/bg_mountain.h"
-#include "../sprites/bg_moon.h"
-#include "../sprites/bg_shared.h"
+#include "../sprites/bg_mountain.c"
+#include "../sprites/bg_moon.c"
+#include "../sprites/bg_shared.c"
 
 #include "Models/Animal.h"
 #include "Models/AnimalStats.h"
 #include "Models/Farm.h"
 #include "Models/FarmStats.h"
+
+#include "../audio/Skyrim.h"
 
 
 #endif //GBA_SPRITE_ENGINE_PROJECT_MAIN_H

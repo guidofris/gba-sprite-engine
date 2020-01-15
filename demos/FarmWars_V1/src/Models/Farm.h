@@ -14,7 +14,7 @@ public:
     std::unique_ptr<FarmStats> stats;
     std::vector<std::unique_ptr<Animal>> animals;
 
-    void addAnimal( Animal::AnimalType type, Animal::AnimalDirection direction, int velocity  );
+    void addAnimal( Animal::AnimalType type, Animal::AnimalDirection direction, int velocity, int position);
 };
 
 

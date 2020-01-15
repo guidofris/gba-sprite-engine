@@ -29,7 +29,7 @@ void Animal::tick() {
 }
 */
 
-Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(type), direction(direction), velocity(velocity) {
+Animal::Animal(AnimalType type, AnimalDirection direction, int velocity, int position ): type(type), direction(direction), velocity(velocity) {
 
     //spriteBuilder = std::unique_ptr<SpriteBuilder<Sprite>>(new SpriteBuilder<Sprite>);
 
@@ -40,7 +40,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                     ->withData(konijnTiles, sizeof(konijnTiles))
                     .withSize(SIZE_32_32)
                     .withAnimated(2, 15)
-                    .withLocation(0, 135)
+                    .withLocation(position, 135)
                     .buildPtr();
 
             stats = std::unique_ptr<AnimalStats>(new AnimalStats(10,10,10,12));
@@ -51,7 +51,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                     ->withData(kipTiles, sizeof(kipTiles))
                     .withSize(SIZE_32_32)
                     .withAnimated(2, 15)
-                    .withLocation(0, 135)
+                    .withLocation(position, 135)
                     .buildPtr();
 
             stats = std::unique_ptr<AnimalStats>(new AnimalStats(20,20,20,24));
@@ -62,7 +62,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                     ->withData(eendTiles, sizeof(eendTiles))
                     .withSize(SIZE_32_32)
                     .withAnimated(2, 15)
-                    .withLocation(0, 133)
+                    .withLocation(position, 133)
                     .buildPtr();
 
             stats = std::unique_ptr<AnimalStats>(new AnimalStats(40,40,40,48));
@@ -73,7 +73,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                     ->withData(koeTiles, sizeof(koeTiles))
                     .withSize(SIZE_32_32)
                     .withAnimated(2, 15)
-                    .withLocation(0, 131)
+                    .withLocation(position, 131)
                     .buildPtr();
 
             stats = std::unique_ptr<AnimalStats>(new AnimalStats(60,60,60,72));
@@ -84,7 +84,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                     ->withData(lamaTiles, sizeof(lamaTiles))
                     .withSize(SIZE_32_32)
                     .withAnimated(2, 15)
-                    .withLocation(0, 127)
+                    .withLocation(position, 127)
                     .buildPtr();
 
             stats = std::unique_ptr<AnimalStats>(new AnimalStats(80,80,80,96));
@@ -95,7 +95,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity ): type(
                            ->withData(yodaTiles, sizeof(yodaTiles))
                            .withSize(SIZE_32_32)
                            .withAnimated(2, 15)
-                           .withLocation(0, 127)
+                           .withLocation(position, 127)
                            .buildPtr();
 
             stats = std::unique_ptr<AnimalStats>(new AnimalStats(100,100,100,120));
@@ -127,11 +127,12 @@ Animal::AnimalType Animal::getType() const {
 }
 
 
-Animal::Animal(Sprite *pSprite, AnimalType type, AnimalDirection direction, int i) : type(type), direction(direction), velocity(i) {
+Animal::Animal(Sprite *pSprite, AnimalType type, AnimalDirection direction, int i, int position) : type(type), direction(direction), velocity(i) {
     sprite = spriteBuilder
             ->buildWithDataOf(*pSprite);
 
-    sprite->moveTo(0, 127);
+    sprite->makeAnimated(2, 15);
+    sprite->moveTo(position, 127);
     sprite->update();
 }
 

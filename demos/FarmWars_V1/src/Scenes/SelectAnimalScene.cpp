@@ -131,21 +131,21 @@ void SelectAnimalScene::tick(u16 keys) {
     if(keys & KEY_A) {
         if (Cursor->getX() == 50) {
             if (Cursor->getY() == 50) {
-                GameController::getInstance()->userFarm->addAnimal(Animal::lama, Animal::AnimalDirection::right, 1);
+                GameController::getInstance()->userFarm->addAnimal(Animal::lama, Animal::AnimalDirection::right, 1, position);
             } else if (Cursor->getY() == 100) {
-                GameController::getInstance()->userFarm->addAnimal(Animal::duck, Animal::AnimalDirection::right, 1);
+                GameController::getInstance()->userFarm->addAnimal(Animal::duck, Animal::AnimalDirection::right, 1, position);
             }
         } else if (Cursor->getX() == 100) {
             if (Cursor->getY() == 50) {
-                GameController::getInstance()->userFarm->addAnimal(Animal::chicken, Animal::AnimalDirection::right, 1);
+                GameController::getInstance()->userFarm->addAnimal(Animal::chicken, Animal::AnimalDirection::right, 1, position);
             } else if (Cursor->getY() == 100) {
-                GameController::getInstance()->userFarm->addAnimal(Animal::rabbit, Animal::AnimalDirection::right, 1);
+                GameController::getInstance()->userFarm->addAnimal(Animal::rabbit, Animal::AnimalDirection::right, 1, position);
             }
         } else if (Cursor->getX() == 150) {
             if (Cursor->getY() == 50) {
-                GameController::getInstance()->userFarm->addAnimal(Animal::cow, Animal::AnimalDirection::right, 1);
+                GameController::getInstance()->userFarm->addAnimal(Animal::cow, Animal::AnimalDirection::right, 1, position);
             } else if (Cursor->getY() == 100) {
-                GameController::getInstance()->userFarm->addAnimal(Animal::yoda, Animal::AnimalDirection::right, 1);
+                GameController::getInstance()->userFarm->addAnimal(Animal::yoda, Animal::AnimalDirection::right, 1, position);
             }
         }
         GameController::getInstance()->transitionIntoScene(GameController::Scenes::MainNext);

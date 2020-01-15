@@ -5,7 +5,7 @@
 
 #include "../main.h"
 
-int i;
+int i,j;
 
 MainScene::MainScene(std::shared_ptr<GBAEngine> engine) : Scene(engine) {
 
@@ -96,6 +96,7 @@ u16 oldKey;
 
 void MainScene::tick(u16 keys) {
     i = 0;
+    j = 0 ;
     if (!_initialized)
     {
         EnemyBase->flipHorizontally(true);
@@ -107,6 +108,11 @@ void MainScene::tick(u16 keys) {
         b->init();
         // b->tick();
     }
+    for (auto &c : GameController::getInstance()->cpuFarm->animals) {
+        j++;
+        c->init();
+        // b->tick();
+    }
     TextStream::instance().setText(std::to_string(i), 2, 1);
 
 
@@ -114,7 +120,7 @@ void MainScene::tick(u16 keys) {
         for (auto &b : animals) {
             b->getSprite()->stopAnimating();
         }
-        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Select);
+        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Select, (int) bg_moon_x*(-1));
     }
 
     if(keys & KEY_START) {
@@ -128,22 +134,22 @@ void MainScene::tick(u16 keys) {
 
         switch (animalSelection) {
             case 1:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::rabbit, Animal::AnimalDirection::left, -1);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::rabbit, Animal::AnimalDirection::left, -1, bg_moon_x*(-1)+416);
                 break;
             case 2:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::duck, Animal::AnimalDirection::left, -2);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::duck, Animal::AnimalDirection::left, -2, bg_moon_x*(-1)+416);
                 break;
             case 3:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::yoda, Animal::AnimalDirection::left, -1);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::yoda, Animal::AnimalDirection::left, -1, bg_moon_x*(-1)+416);
                 break;
             case 4:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::chicken, Animal::AnimalDirection::left, -2);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::chicken, Animal::AnimalDirection::left, -2, bg_moon_x*(-1)+416);
                 break;
             case 5:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::cow, Animal::AnimalDirection::left, -3);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::cow, Animal::AnimalDirection::left, -3, bg_moon_x*(-1)+416);
                 break;
             case 6:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::lama, Animal::AnimalDirection::left, -1);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::lama, Animal::AnimalDirection::left, -1, bg_moon_x*(-1)+416);
                 break;
             default:
                 animalSelection = 0;

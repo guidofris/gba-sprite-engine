@@ -8,7 +8,7 @@ Farm::Farm() {
     stats = std::unique_ptr<FarmStats>(new FarmStats(100,1000));
 }
 
-void Farm::addAnimal(Animal::AnimalType type, Animal::AnimalDirection direction, int velocity) {
+void Farm::addAnimal(Animal::AnimalType type, Animal::AnimalDirection direction, int velocity, int position) {
     /* TODO: search in animals vector for this animal-type
      * if the animal exists use this sprite to create a new animal
     */
@@ -23,12 +23,12 @@ void Farm::addAnimal(Animal::AnimalType type, Animal::AnimalDirection direction,
 
     if (sprite == nullptr)
     {
-        std::unique_ptr<Animal> animal = std::unique_ptr<Animal>(new Animal(type,direction,velocity));
+        std::unique_ptr<Animal> animal = std::unique_ptr<Animal>(new Animal(type,direction,velocity,position));
         animals.push_back(std::move(animal));
     }
     else
     {
-        std::unique_ptr<Animal> animal = std::unique_ptr<Animal>(new Animal(sprite, type,direction,velocity));
+        std::unique_ptr<Animal> animal = std::unique_ptr<Animal>(new Animal(sprite, type,direction,velocity,position));
         animals.push_back(std::move(animal));
     }
 

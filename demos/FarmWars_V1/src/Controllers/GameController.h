@@ -25,7 +25,7 @@ public:
 
     enum Scenes { Intro, Main, MainNext, Select };
 
-    void transitionIntoScene (Scenes scenes);
+    void transitionIntoScene (Scenes scenes, int Position=0);
 
     std::unique_ptr<Farm> userFarm = std::unique_ptr<Farm>(new Farm());
     std::unique_ptr<Farm> cpuFarm = std::unique_ptr<Farm>(new Farm());

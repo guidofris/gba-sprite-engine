@@ -38,7 +38,7 @@ void GameController::Init(std::shared_ptr<GBAEngine> engine) {
 
 }
 
-void GameController::transitionIntoScene(GameController::Scenes scene) {
+void GameController::transitionIntoScene(GameController::Scenes scene, int Position) {
 
     switch (scene) {
         case Scenes::Intro :
@@ -56,10 +56,11 @@ void GameController::transitionIntoScene(GameController::Scenes scene) {
             //mainScene_Next = new MainScene(_engine);
             //if (!_engine.get()->isTransitioning()) _engine.get()->setScene(mainScene);
             _engine->setScene(currentScene);
+
             //currentScene = mainScene_Next;
             break;
         case Scenes::Select :
-            selectAnimalScene = new SelectAnimalScene(_engine);
+            selectAnimalScene = new SelectAnimalScene(_engine, Position);
             //if (!_engine.get()->isTransitioning()) _engine.get()->setScene(selectAnimalScene);
             //_engine.get()->setScene(selectAnimalScene);
             _engine->setScene(selectAnimalScene);

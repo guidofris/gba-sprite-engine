@@ -22,6 +22,7 @@ private:
     std::unique_ptr<Sprite> Cursor ;
     int SelectX = 50;
     int SelectY = 50;
+    int position ;
     //std::shared_ptr<int> Spawn ;
 
 public:
@@ -33,7 +34,7 @@ public:
     std::vector<Sprite *> sprites() override;
     std::vector<Background *> backgrounds() override;
 
-    SelectAnimalScene(std::shared_ptr<GBAEngine> engine) : Scene(engine) {}
+    SelectAnimalScene(std::shared_ptr<GBAEngine> engine, int position) : Scene(engine), position(position) {}
 
     void load() override;
     void tick(u16 keys) override;

@@ -10,8 +10,8 @@ public:
     enum AnimalType { duck, chicken, cow, rabbit, lama, yoda };
     enum AnimalDirection { left, right };
 
-    Animal(AnimalType type, AnimalDirection direction, int velocity );
-    Animal(Sprite *pSprite, AnimalType type, AnimalDirection direction, int i);
+    Animal(AnimalType type, AnimalDirection direction, int velocity, int position );
+    Animal(Sprite *pSprite, AnimalType type, AnimalDirection direction, int i, int position);
 
     void init();
     void tick();

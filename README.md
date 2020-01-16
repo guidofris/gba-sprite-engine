@@ -1,15 +1,14 @@
 
 ## FarmWars tryout for UHasselt
 
-a Game has 2 FarmBases, myFarm and aiFarm (computer)
+a Game has 2 FarmBases, myFarm and cpuFarm (computer)
 
-1 FarmBase holds vector of animals
+Your FarmBase holds a vector of animals.
+When select is pressed, a selection screen comes up where you can choose you animal. This is then spawned by your farm and added to it's vector. Your animal now moves towards your enemy's farm, where it will try and destroy it. However when the enemy farm spawns animals itself, your animals will have to fight them and win to go further. To win you have to destroy your enemy's base. 
 
-when animal is selected it is spawned by a farm and added to the vector
+Every animal your want to choose have different attacks, healths and speeds. 
 
-when the Games ticks the Farm instructs by move, to move the animals that are hold by the vector
-
-the rest comes here....
+May the best farmer win!
 
 ## used images
 

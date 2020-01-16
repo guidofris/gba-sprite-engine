@@ -191,7 +191,7 @@ if(keys & KEY_L) {
                 animal->getSprite()->setVelocity(2, 0);
             }
             else {
-                animal->getSprite()->setVelocity(1, 0);
+                animal->getSprite()->setVelocity(-1, 0);
             }
         }
     }
@@ -234,6 +234,9 @@ if(keys & KEY_L) {
     if (animalCollided)
     {
         GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()+animalCounter);
+    }
+    if(GameController::getInstance()->cpuFarm->stats.get()->getHealth() <= 0) {
+        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Intro);
     }
 
     // print Stats

@@ -36,6 +36,8 @@ private:
 public:
     std::vector<Sprite *> sprites() override;
     std::vector<Background *> backgrounds() override;
+    void checkCollitionWithCpuFarm();
+    void checkCollitionWithUserFarm();
 
     MainScene(std::shared_ptr<GBAEngine> engine);
 

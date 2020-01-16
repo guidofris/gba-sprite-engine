@@ -216,30 +216,8 @@ if(keys & KEY_L) {
     //GameController::getInstance()->userFarm->doAnimalsCollideWithFarm(EnemyBase.get());
     //GameController::getInstance()->cpuFarm->doAnimalsCollideWithFarm(Base.get());
 
-
-    int animalCounter = 0;
-    bool animalCollided = false;
-    for (auto &animal : GameController::getInstance()->userFarm->animals) {
-        if (animal.get()->getSprite()->collidesWith(*EnemyBase.get()))
-        {
-            animal->getSprite()->setVelocity(0,0) ;
-            animal->setCollides(true) ;
-            //TODO update stats
-            GameController::getInstance()->userFarm->stats.get()->addFood(animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
-            GameController::getInstance()->cpuFarm->stats.get()->removeHealth(animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
-            animal.get()->getSprite()->stopAnimating();
-            animalCollided = true;
-            break;
-        }
-        animalCounter++;
-    }
-    if (animalCollided)
-    {
-        GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()+animalCounter);
-    }
-    if(GameController::getInstance()->cpuFarm->stats.get()->getHealth() <= 0) {
-        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Intro);
-    }
+    checkCollitionWithCpuFarm();
+    checkCollitionWithUserFarm();
 
     // print Stats
     TextStream::instance().setText(std::to_string(GameController::getInstance()->userFarm->stats.get()->getHealth()), 1, 1);
@@ -272,3 +250,54 @@ if(keys & KEY_L) {
 */
 }
 
+void MainScene::checkCollitionWithCpuFarm(){
+    int animalCounter = 0;
+    bool animalCollided = false;
+    for (auto &animal : GameController::getInstance()->userFarm->animals) {
+        if (animal.get()->getSprite()->collidesWith(*EnemyBase.get()))
+        {
+            animal->getSprite()->setVelocity(0,0) ;
+            animal->setCollides(true) ;
+            //TODO update stats
+            GameController::getInstance()->userFarm->stats.get()->addFood(animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
+            GameController::getInstance()->cpuFarm->stats.get()->removeHealth(animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
+            animal.get()->getSprite()->stopAnimating();
+            animalCollided = true;
+            break;
+        }
+        animalCounter++;
+    }
+    if (animalCollided)
+    {
+        GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()+animalCounter);
+    }
+    if(GameController::getInstance()->cpuFarm->stats.get()->getHealth() <= 0) {
+        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Intro);
+    }
+}
+
+void MainScene::checkCollitionWithUserFarm(){
+    int animalCounter = 0;
+    bool animalCollided = false;
+    for (auto &animal : GameController::getInstance()->cpuFarm->animals) {
+        if (animal.get()->getSprite()->collidesWith(*Base.get()))
+        {
+            animal->getSprite()->setVelocity(0,0) ;
+            animal->setCollides(true) ;
+            //TODO update stats
+            GameController::getInstance()->cpuFarm->stats.get()->addFood(animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
+            GameController::getInstance()->userFarm->stats.get()->removeHealth(animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
+            animal.get()->getSprite()->stopAnimating();
+            animalCollided = true;
+            break;
+        }
+        animalCounter++;
+    }
+    if (animalCollided)
+    {
+        GameController::getInstance()->cpuFarm->animals.erase(GameController::getInstance()->cpuFarm->animals.begin()+animalCounter);
+    }
+    if(GameController::getInstance()->userFarm->stats.get()->getHealth() <= 0) {
+        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Intro);
+    }
+}

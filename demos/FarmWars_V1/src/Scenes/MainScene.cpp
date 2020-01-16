@@ -134,6 +134,7 @@ void MainScene::tick(u16 keys) {
     if(!keys && oldKey) {
         oldKey = 0;
         animalSelection++;
+
         switch (animalSelection) {
             case 1:
                 GameController::getInstance()->cpuFarm->addAnimal(Animal::rabbit, Animal::AnimalDirection::left, 1, bg_moon_x*(-1)+416);

@@ -10,55 +10,29 @@
 class AnimalStats {
 
 public:
-
     AnimalStats(int health, int attackDamage, int foodCost, int foodGain, int attackTimeOut);
-
-    bool attack(AnimalStats other);
-
     FarmStats* farmState;
-
+    bool attack(AnimalStats other);
     void setFarmStats(FarmStats *farmState);
     void spawn();
     void die();
-
     FarmStats *getFarmStats() const;
-
+    int getAttackDamage() const;
+    void setAttackTimeOut(int attackTimeOut);
+    int getAttackTimeOut() const;
+    void minAttackTimeOut();
+    int getFoodGain() const;
+    FarmStats *getFarmState() const;
+    int getHealth() const;
 private:
-
     // statics type animal
     int foodCost;
-public:
-    int getAttackDamage() const;
-
-private:
     int attackDamage;
     int foodGain;
     int attackTimeOut ;
-public:
-    void setAttackTimeOut(int attackTimeOut);
-
-public:
-    int getAttackTimeOut() const;
-
-public:
-    void minAttackTimeOut();
-
-public:
-    int getFoodGain() const;
-
-public:
-    FarmStats *getFarmState() const;
-
-private:
     int velocity;
-
     // dynamics
     int health;
-public:
-    int getHealth() const;
-
-public:
-
 };
 
 

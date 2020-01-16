@@ -199,10 +199,10 @@ if(keys & KEY_L) {
         bg_mountain_x -= 3;
         for (auto &animal : GameController::getInstance()->userFarm->animals) {
             if(animal->isCollides() == false) {
-                animal->getSprite()->setVelocity(1, 0);
+                animal->getSprite()->setVelocity(2, 0);
             }
             else {
-                animal->getSprite()->setVelocity(0, 0);
+                animal->getSprite()->setVelocity(1, 0);
             }
         }
         for (auto &animal : GameController::getInstance()->cpuFarm->animals) {
@@ -210,7 +210,7 @@ if(keys & KEY_L) {
                 animal->getSprite()->setVelocity(0, 0);
             }
             else {
-                animal->getSprite()->setVelocity(-1, 0);
+                animal->getSprite()->setVelocity(1, 0);
             }
         }
     }
@@ -290,12 +290,11 @@ if(keys & KEY_L) {
             GameController::getInstance()->cpuFarm->animals.erase(GameController::getInstance()->cpuFarm->animals.begin()) ;
         }
     }
-    /*if (animalCollided)
+    if (animalCollided)
     {
-        animal.get()->getSprite()->stopAnimating();
         GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()+animalCounter);
     }
-     */
+
     if(GameController::getInstance()->cpuFarm->stats.get()->getHealth() <= 0 || GameController::getInstance()->userFarm->stats.get()->getHealth() <= 0) {
         GameController::getInstance()->transitionIntoScene(GameController::Scenes::Intro);
     }

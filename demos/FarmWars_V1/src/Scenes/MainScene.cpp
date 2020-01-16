@@ -185,13 +185,29 @@ if(keys & KEY_L) {
                 animal->getSprite()->setVelocity(-1, 0);
             }
         }
+        for (auto &animal : GameController::getInstance()->cpuFarm->animals) {
+            if(animal->isCollides() == false) {
+                animal->getSprite()->setVelocity(-2, 0);
+            }
+            else {
+                animal->getSprite()->setVelocity(-1, 0);
+            }
+        }
     }
     else if(keys & KEY_L && bg_moon_x > 0) {
         bg_moon_x -= 1;
         bg_mountain_x -= 3;
         for (auto &animal : GameController::getInstance()->userFarm->animals) {
             if(animal->isCollides() == false) {
-                animal->getSprite()->setVelocity(2, 0);
+                animal->getSprite()->setVelocity(1, 0);
+            }
+            else {
+                animal->getSprite()->setVelocity(0, 0);
+            }
+        }
+        for (auto &animal : GameController::getInstance()->cpuFarm->animals) {
+            if(animal->isCollides() == false) {
+                animal->getSprite()->setVelocity(0, 0);
             }
             else {
                 animal->getSprite()->setVelocity(-1, 0);
@@ -207,6 +223,14 @@ if(keys & KEY_L) {
                 animal->getSprite()->setVelocity(0, 0);
             }
         }
+        for (auto &animal : GameController::getInstance()->cpuFarm->animals) {
+            if(animal->isCollides()== false) {
+                animal->getSprite()->setVelocity(-1, 0);
+            }
+            else {
+                animal->getSprite()->setVelocity(0, 0);
+            }
+        }
     }
     //bg_moon_x += 0.1;
     bg_moon.get()->scroll((int) bg_moon_x, 0);
@@ -217,8 +241,64 @@ if(keys & KEY_L) {
     //GameController::getInstance()->userFarm->doAnimalsCollideWithFarm(EnemyBase.get());
     //GameController::getInstance()->cpuFarm->doAnimalsCollideWithFarm(Base.get());
 
-    checkCollitionWithCpuFarm();
-    checkCollitionWithUserFarm();
+
+    int animalCounter = 0;
+    bool animalCollided = false;
+    for (auto &animal : GameController::getInstance()->userFarm->animals) {
+        if (animal.get()->getSprite()->collidesWith(*EnemyBase.get()))
+        {
+            animal->getSprite()->setVelocity(0,0) ;
+            animal->setCollides(true) ;
+            //TODO update stats
+            if(animal->getStats().get()->getAttackTimeOut() == 0) {
+                GameController::getInstance()->userFarm->stats.get()->addFood(
+                        animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
+                GameController::getInstance()->cpuFarm->stats.get()->removeHealth(
+                        animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
+                animalCollided = true;
+                animal->getStats().get()->setAttackTimeOut(100) ;
+                break;
+            }
+            animal->getStats().get()->minAttackTimeOut() ;
+        }
+        animalCounter++;
+        if(animal->getStats().get()->getHealth() == 0) {
+            animal.get()->getSprite()->stopAnimating();
+            GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()) ;
+        }
+    }
+    for (auto &animal : GameController::getInstance()->cpuFarm->animals) {
+        if (animal.get()->getSprite()->collidesWith(*Base.get()))
+        {
+            animal->getSprite()->setVelocity(0,0) ;
+            animal->setCollides(true) ;
+            //TODO update stats
+            if(animal->getStats().get()->getAttackTimeOut() == 0) {
+                GameController::getInstance()->cpuFarm->stats.get()->addFood(
+                        animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
+                GameController::getInstance()->userFarm->stats.get()->removeHealth(
+                        animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
+                animalCollided = true;
+                animal->getStats().get()->setAttackTimeOut(100) ;
+                break;
+            }
+            animal->getStats().get()->minAttackTimeOut() ;
+        }
+        animalCounter++;
+        if(animal->getStats().get()->getHealth() == 0) {
+            animal.get()->getSprite()->stopAnimating();
+            GameController::getInstance()->cpuFarm->animals.erase(GameController::getInstance()->cpuFarm->animals.begin()) ;
+        }
+    }
+    /*if (animalCollided)
+    {
+        animal.get()->getSprite()->stopAnimating();
+        GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()+animalCounter);
+    }
+     */
+    if(GameController::getInstance()->cpuFarm->stats.get()->getHealth() <= 0 || GameController::getInstance()->userFarm->stats.get()->getHealth() <= 0) {
+        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Intro);
+    }
 
     // print Stats
     TextStream::instance().setText(std::to_string(GameController::getInstance()->userFarm->stats.get()->getHealth()), 1, 1);
@@ -251,54 +331,3 @@ if(keys & KEY_L) {
 */
 }
 
-void MainScene::checkCollitionWithCpuFarm(){
-    int animalCounter = 0;
-    bool animalCollided = false;
-    for (auto &animal : GameController::getInstance()->userFarm->animals) {
-        if (animal.get()->getSprite()->collidesWith(*EnemyBase.get()))
-        {
-            animal->getSprite()->setVelocity(0,0) ;
-            animal->setCollides(true) ;
-            //TODO update stats
-            GameController::getInstance()->userFarm->stats.get()->addFood(animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
-            GameController::getInstance()->cpuFarm->stats.get()->removeHealth(animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
-            animal.get()->getSprite()->stopAnimating();
-            animalCollided = true;
-            break;
-        }
-        animalCounter++;
-    }
-    if (animalCollided)
-    {
-        GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()+animalCounter);
-    }
-    if(GameController::getInstance()->cpuFarm->stats.get()->getHealth() <= 0) {
-        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Intro);
-    }
-}
-
-void MainScene::checkCollitionWithUserFarm(){
-    int animalCounter = 0;
-    bool animalCollided = false;
-    for (auto &animal : GameController::getInstance()->cpuFarm->animals) {
-        if (animal.get()->getSprite()->collidesWith(*Base.get()))
-        {
-            animal->getSprite()->setVelocity(0,0) ;
-            animal->setCollides(true) ;
-            //TODO update stats
-            GameController::getInstance()->cpuFarm->stats.get()->addFood(animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
-            GameController::getInstance()->userFarm->stats.get()->removeHealth(animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
-            animal.get()->getSprite()->stopAnimating();
-            animalCollided = true;
-            break;
-        }
-        animalCounter++;
-    }
-    if (animalCollided)
-    {
-        GameController::getInstance()->cpuFarm->animals.erase(GameController::getInstance()->cpuFarm->animals.begin()+animalCounter);
-    }
-    if(GameController::getInstance()->userFarm->stats.get()->getHealth() <= 0) {
-        GameController::getInstance()->transitionIntoScene(GameController::Scenes::Intro);
-    }
-}

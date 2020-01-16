@@ -43,7 +43,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity, int pos
                     .withLocation(position, 135)
                     .buildPtr();
 
-            stats = std::unique_ptr<AnimalStats>(new AnimalStats(10,10,10,12));
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(10,10,10,12, 0));
             break;
 
         case AnimalType::chicken:
@@ -54,7 +54,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity, int pos
                     .withLocation(position, 135)
                     .buildPtr();
 
-            stats = std::unique_ptr<AnimalStats>(new AnimalStats(20,20,20,24));
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(20,20,20,24, 0));
             break;
 
         case AnimalType::duck:
@@ -65,7 +65,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity, int pos
                     .withLocation(position, 133)
                     .buildPtr();
 
-            stats = std::unique_ptr<AnimalStats>(new AnimalStats(40,40,40,48));
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(40,40,40,48, 0));
             break;
 
         case AnimalType::cow:
@@ -76,7 +76,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity, int pos
                     .withLocation(position, 131)
                     .buildPtr();
 
-            stats = std::unique_ptr<AnimalStats>(new AnimalStats(60,60,60,72));
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(60,60,60,72, 0));
             break;
 
         case AnimalType::lama:
@@ -87,7 +87,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity, int pos
                     .withLocation(position, 127)
                     .buildPtr();
 
-            stats = std::unique_ptr<AnimalStats>(new AnimalStats(80,80,80,96));
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(80,80,80,96, 0));
             break;
 
         case AnimalType::yoda:
@@ -98,7 +98,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity, int pos
                            .withLocation(position, 127)
                            .buildPtr();
 
-            stats = std::unique_ptr<AnimalStats>(new AnimalStats(100,100,100,120));
+            stats = std::unique_ptr<AnimalStats>(new AnimalStats(100,100,100,120, 0));
             break;
     }
 

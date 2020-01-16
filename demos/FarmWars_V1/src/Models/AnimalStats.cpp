@@ -4,8 +4,8 @@
 
 #include "AnimalStats.h"
 
-AnimalStats::AnimalStats(int health, int attackDamage, int foodCost, int foodGain) :
-        health(health), attackDamage(attackDamage), foodCost(foodCost), foodGain(foodGain)
+AnimalStats::AnimalStats(int health, int attackDamage, int foodCost, int foodGain, int attackTimeOut) :
+        health(health), attackDamage(attackDamage), foodCost(foodCost), foodGain(foodGain), attackTimeOut(attackTimeOut)
 {
 
 }
@@ -45,6 +45,22 @@ FarmStats *AnimalStats::getFarmState() const {
 
 int AnimalStats::getFoodGain() const {
     return foodGain;
+}
+
+int AnimalStats::getHealth() const {
+    return health;
+}
+
+void AnimalStats::minAttackTimeOut() {
+    AnimalStats::attackTimeOut-- ;
+}
+
+int AnimalStats::getAttackTimeOut() const {
+    return attackTimeOut;
+}
+
+void AnimalStats::setAttackTimeOut(int attackTimeOut) {
+    AnimalStats::attackTimeOut = attackTimeOut;
 }
 
 

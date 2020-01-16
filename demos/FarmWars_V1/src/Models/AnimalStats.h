@@ -11,7 +11,7 @@ class AnimalStats {
 
 public:
 
-    AnimalStats(int health, int attackDamage, int foodCost, int foodGain);
+    AnimalStats(int health, int attackDamage, int foodCost, int foodGain, int attackTimeOut);
 
     bool attack(AnimalStats other);
 
@@ -33,6 +33,16 @@ public:
 private:
     int attackDamage;
     int foodGain;
+    int attackTimeOut ;
+public:
+    void setAttackTimeOut(int attackTimeOut);
+
+public:
+    int getAttackTimeOut() const;
+
+public:
+    void minAttackTimeOut();
+
 public:
     int getFoodGain() const;
 
@@ -44,6 +54,9 @@ private:
 
     // dynamics
     int health;
+public:
+    int getHealth() const;
+
 public:
 
 };

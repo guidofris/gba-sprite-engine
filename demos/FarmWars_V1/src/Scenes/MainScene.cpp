@@ -24,6 +24,10 @@ std::vector<Sprite *> MainScene::sprites() {
         sprites.push_back(b->getSprite());
     }
 
+    for (auto &b : GameController::getInstance()->cpuFarm->animals) {
+        sprites.push_back(b->getSprite());
+    }
+
     sprites.push_back(Base.get());
     sprites.push_back(EnemyBase.get());
 
@@ -130,26 +134,25 @@ void MainScene::tick(u16 keys) {
     if(!keys && oldKey) {
         oldKey = 0;
         animalSelection++;
-        TextStream::instance().setText(std::to_string(animalSelection), 3, 1);
 
         switch (animalSelection) {
             case 1:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::rabbit, Animal::AnimalDirection::left, -1, bg_moon_x*(-1)+416);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::rabbit, Animal::AnimalDirection::left, 1, bg_moon_x*(-1)+416);
                 break;
             case 2:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::duck, Animal::AnimalDirection::left, -2, bg_moon_x*(-1)+416);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::duck, Animal::AnimalDirection::left, 2, bg_moon_x*(-1)+416);
                 break;
             case 3:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::yoda, Animal::AnimalDirection::left, -1, bg_moon_x*(-1)+416);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::yoda, Animal::AnimalDirection::left, 1, bg_moon_x*(-1)+416);
                 break;
             case 4:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::chicken, Animal::AnimalDirection::left, -2, bg_moon_x*(-1)+416);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::chicken, Animal::AnimalDirection::left, 2, bg_moon_x*(-1)+416);
                 break;
             case 5:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::cow, Animal::AnimalDirection::left, -3, bg_moon_x*(-1)+416);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::cow, Animal::AnimalDirection::left, 3, bg_moon_x*(-1)+416);
                 break;
             case 6:
-                GameController::getInstance()->cpuFarm->addAnimal(Animal::lama, Animal::AnimalDirection::left, -1, bg_moon_x*(-1)+416);
+                GameController::getInstance()->cpuFarm->addAnimal(Animal::lama, Animal::AnimalDirection::left, 1, bg_moon_x*(-1)+416);
                 break;
             default:
                 animalSelection = 0;
@@ -223,18 +226,29 @@ if(keys & KEY_L) {
             animal->getSprite()->setVelocity(0,0) ;
             animal->setCollides(true) ;
             //TODO update stats
-            GameController::getInstance()->userFarm->stats.get()->addFood(animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
-            GameController::getInstance()->cpuFarm->stats.get()->removeHealth(animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
-            animal.get()->getSprite()->stopAnimating();
-            animalCollided = true;
-            break;
+            if(animal->getStats().get()->getAttackTimeOut() == 0) {
+                GameController::getInstance()->userFarm->stats.get()->addFood(
+                        animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
+                GameController::getInstance()->cpuFarm->stats.get()->removeHealth(
+                        animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
+                animalCollided = true;
+                animal->getStats().get()->setAttackTimeOut(100) ;
+                break;
+            }
+            animal->getStats().get()->minAttackTimeOut() ;
         }
         animalCounter++;
+        if(animal->getStats().get()->getHealth() == 0) {
+            animal.get()->getSprite()->stopAnimating();
+            GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()) ;
+        }
     }
-    if (animalCollided)
+    /*if (animalCollided)
     {
+        animal.get()->getSprite()->stopAnimating();
         GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()+animalCounter);
     }
+     */
     if(GameController::getInstance()->cpuFarm->stats.get()->getHealth() <= 0) {
         GameController::getInstance()->transitionIntoScene(GameController::Scenes::Intro);
     }

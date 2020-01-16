@@ -32,6 +32,10 @@ private:
     std::shared_ptr<Sprite> sprite;
     std::shared_ptr<SpriteBuilder<Sprite>> spriteBuilder = std::unique_ptr<SpriteBuilder<Sprite>>(new SpriteBuilder<Sprite>);
     std::shared_ptr<AnimalStats> stats;
+public:
+    const std::shared_ptr<AnimalStats> &getStats() const;
+
+private:
 
     bool isInit = 0;
     bool collides = false ;

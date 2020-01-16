@@ -210,21 +210,38 @@ if(keys & KEY_L) {
     Base.get()->moveTo((int) bg_moon_x*(-1), 94);
     EnemyBase.get()->moveTo((int) bg_moon_x*(-1)+416, 94);
 
+    //TODO re-engineering code, encapsulate the following code into doAnimalsCollideWithFarm
+    //GameController::getInstance()->userFarm->doAnimalsCollideWithFarm(EnemyBase.get());
+    //GameController::getInstance()->cpuFarm->doAnimalsCollideWithFarm(Base.get());
+
+
+    int animalCounter = 0;
+    bool animalCollided = false;
     for (auto &animal : GameController::getInstance()->userFarm->animals) {
         if (animal.get()->getSprite()->collidesWith(*EnemyBase.get()))
         {
             animal->getSprite()->setVelocity(0,0) ;
             animal->setCollides(true) ;
-            TextStream::instance().setText("yes", 4, 1);
             //TODO update stats
-            //TODO remove and hide animal from vector
-            //animal.get()->getSprite().
+            GameController::getInstance()->userFarm->stats.get()->addFood(animal->getStats().get()->getFoodGain());         // gain food of userFarm by friendly animal
+            GameController::getInstance()->cpuFarm->stats.get()->removeHealth(animal->getStats().get()->getAttackDamage()); // lower health of cpuFarm by attackDamage of animal
+            animal.get()->getSprite()->stopAnimating();
+            animalCollided = true;
+            break;
         }
-        else
-        {
-            TextStream::instance().setText("", 4, 1);
-        }
+        animalCounter++;
     }
+    if (animalCollided)
+    {
+        GameController::getInstance()->userFarm->animals.erase(GameController::getInstance()->userFarm->animals.begin()+animalCounter);
+    }
+
+    // print Stats
+    TextStream::instance().setText(std::to_string(GameController::getInstance()->userFarm->stats.get()->getHealth()), 1, 1);
+    TextStream::instance().setText(std::to_string(GameController::getInstance()->cpuFarm->stats.get()->getHealth()), 1, 25);
+
+    TextStream::instance().setText(std::to_string(GameController::getInstance()->userFarm->stats.get()->getFood()), 2, 1);
+    TextStream::instance().setText(std::to_string(GameController::getInstance()->cpuFarm->stats.get()->getFood()), 2, 25);
 
 
     //EnemyBase

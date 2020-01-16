@@ -12,10 +12,17 @@ public:
 
     void addFood(int food);
     void removeFood(int food);
+    void removeHealth(int health);
 
 private:
-    int food = 100;
-    int health = 1000;
+    int _food = 100;
+public:
+    int getFood() const;
+
+private:
+    int _health = 1000;
+public:
+    int getHealth() const;
 
 };
 

@@ -15,7 +15,6 @@ public:
 
     bool attack(AnimalStats other);
 
-    int getFoodGain();
     FarmStats* farmState;
 
     void setFarmStats(FarmStats *farmState);
@@ -34,6 +33,13 @@ public:
 private:
     int attackDamage;
     int foodGain;
+public:
+    int getFoodGain() const;
+
+public:
+    FarmStats *getFarmState() const;
+
+private:
     int velocity;
 
     // dynamics

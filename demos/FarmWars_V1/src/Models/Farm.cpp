@@ -3,6 +3,8 @@
 //
 
 #include "../main.h"
+#include "Farm.h"
+#include <algorithm>
 
 Farm::Farm() {
     stats = std::unique_ptr<FarmStats>(new FarmStats(100,1000));
@@ -30,7 +32,11 @@ void Farm::addAnimal(Animal::AnimalType type, Animal::AnimalDirection direction,
     {
         std::unique_ptr<Animal> animal = std::unique_ptr<Animal>(new Animal(sprite, type,direction,velocity,position));
         animals.push_back(std::move(animal));
+        //return animal.get()->getStats();
     }
 
 }
 
+void Farm::removeAnimalByIndex(int position) {
+
+}

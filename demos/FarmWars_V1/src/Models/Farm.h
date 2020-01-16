@@ -15,6 +15,7 @@ public:
     std::vector<std::unique_ptr<Animal>> animals;
 
     void addAnimal( Animal::AnimalType type, Animal::AnimalDirection direction, int velocity, int position);
+    void removeAnimalByIndex(int position);
 };
 
 

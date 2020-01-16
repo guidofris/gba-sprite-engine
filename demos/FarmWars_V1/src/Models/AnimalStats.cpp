@@ -39,6 +39,14 @@ void AnimalStats::setFarmStats(FarmStats *farmState) {
     AnimalStats::farmState = farmState;
 }
 
+FarmStats *AnimalStats::getFarmState() const {
+    return farmState;
+}
+
+int AnimalStats::getFoodGain() const {
+    return foodGain;
+}
+
 
 
 

@@ -83,7 +83,7 @@ Animal::Animal(AnimalType type, AnimalDirection direction, int velocity, int pos
             sprite = spriteBuilder
                     ->withData(lamaTiles, sizeof(lamaTiles))
                     .withSize(SIZE_32_32)
-                    .withAnimated(2, 15)
+                    .withAnimated(4, 15)
                     .withLocation(position, 127)
                     .buildPtr();
 
@@ -142,6 +142,10 @@ bool Animal::isCollides() const {
 
 void Animal::setCollides(bool collides) {
     Animal::collides = collides;
+}
+
+const std::shared_ptr<AnimalStats> &Animal::getStats() const {
+    return stats;
 }
 
 

@@ -4,15 +4,26 @@
 
 #include "FarmStats.h"
 
-FarmStats::FarmStats(int food, int health) : food(food), health(health) {
+FarmStats::FarmStats(int food, int health) : _food(food), _health(health) {
 
 }
 
 void FarmStats::addFood(int food) {
-    food += food;
+    _food += food;
 }
 
 void FarmStats::removeFood(int food) {
-    food -= food;
+    _food -= food;
 }
 
+void FarmStats::removeHealth(int health) {
+    _health -= health;
+}
+
+int FarmStats::getHealth() const {
+    return _health;
+}
+
+int FarmStats::getFood() const {
+    return _food;
+}

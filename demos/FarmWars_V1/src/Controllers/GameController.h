@@ -14,35 +14,23 @@
 class GameController {
 public:
     GameController();
-
-    static GameController* getInstance();
-
-    void Init(std::shared_ptr<GBAEngine> engine);
-
     IntroScene* introScene;
     MainScene* mainScene_First;
     SelectAnimalScene* selectAnimalScene;
-
-    enum Scenes { Intro, Main, MainNext, Select };
-
-    void transitionIntoScene (Scenes scenes, int Position=0);
-
     std::unique_ptr<Farm> userFarm = std::unique_ptr<Farm>(new Farm());
     std::unique_ptr<Farm> cpuFarm = std::unique_ptr<Farm>(new Farm());
+    static GameController* getInstance();
+    void Init(std::shared_ptr<GBAEngine> engine);
+    enum Scenes { Intro, Main, MainNext, Select };
+    void transitionIntoScene (Scenes scenes, int Position=0);
+    const std::shared_ptr<GBAEngine> &getEngine() const;
+    void setEngine(const std::shared_ptr<GBAEngine> &engine);
 
 private:
     static GameController* instance;
     Scene*  currentScene;
-
     /* Private constructor to prevent instancing. */
-
     std::shared_ptr<GBAEngine> _engine;
-public:
-    const std::shared_ptr<GBAEngine> &getEngine() const;
-
-public:
-    void setEngine(const std::shared_ptr<GBAEngine> &engine);
-
 };
 
 

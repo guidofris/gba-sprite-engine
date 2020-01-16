@@ -9,20 +9,16 @@ class FarmStats {
 public:
     FarmStats(){}
     FarmStats(int food, int health);
-
     void addFood(int food);
     void removeFood(int food);
     void removeHealth(int health);
-
+    int getFood() const;
+    int getHealth() const;
 private:
     int _food = 100;
-public:
-    int getFood() const;
-
-private:
     int _health = 1000;
-public:
-    int getHealth() const;
+
+
 
 };
 

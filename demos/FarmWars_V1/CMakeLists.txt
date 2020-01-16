@@ -19,14 +19,14 @@ add_executable(${PROJECT_NAME}.elf
         sprites/bg_mountain.c
         sprites/bg_moon.h
         sprites/bg_moon.c
-        sprites/select_sprite.h
-        sprites/yoda_sprite.h
-        sprites/lama_sprite.h
-        sprites/eend_sprite.h
-        sprites/konijn_sprite.h
-        sprites/koe_sprite.h
-        sprites/kip_sprite.h
-        sprites/sharedpal.h
+        sprites/select.h
+        sprites/yoda.h
+        sprites/lama.h
+        sprites/eend.h
+        sprites/konijn.h
+        sprites/koe.h
+        sprites/kip.h
+        sprites/shared.h
         src/main.h src/Models/AnimalStats.cpp src/Models/AnimalStats.h src/Models/FarmStats.cpp src/Models/FarmStats.h src/Models/Farm.cpp src/Models/Farm.h)
 
 target_link_libraries(${PROJECT_NAME}.elf gba-sprite-engine)

@@ -174,10 +174,36 @@ if(keys & KEY_L) {
     if(keys & KEY_R && bg_moon_x < 240) {
         bg_moon_x += 1;
         bg_mountain_x += 3;
+        for (auto &animal : GameController::getInstance()->userFarm->animals) {
+            if(animal->isCollides() == false) {
+                animal->getSprite()->setVelocity(0, 0);
+            }
+            else {
+                animal->getSprite()->setVelocity(-1, 0);
+            }
+        }
     }
-    if(keys & KEY_L && bg_moon_x > 0) {
+    else if(keys & KEY_L && bg_moon_x > 0) {
         bg_moon_x -= 1;
         bg_mountain_x -= 3;
+        for (auto &animal : GameController::getInstance()->userFarm->animals) {
+            if(animal->isCollides() == false) {
+                animal->getSprite()->setVelocity(2, 0);
+            }
+            else {
+                animal->getSprite()->setVelocity(1, 0);
+            }
+        }
+    }
+    else {
+        for (auto &animal : GameController::getInstance()->userFarm->animals) {
+            if(animal->isCollides()== false) {
+                animal->getSprite()->setVelocity(1, 0);
+            }
+            else {
+                animal->getSprite()->setVelocity(0, 0);
+            }
+        }
     }
     //bg_moon_x += 0.1;
     bg_moon.get()->scroll((int) bg_moon_x, 0);
@@ -187,6 +213,8 @@ if(keys & KEY_L) {
     for (auto &animal : GameController::getInstance()->userFarm->animals) {
         if (animal.get()->getSprite()->collidesWith(*EnemyBase.get()))
         {
+            animal->getSprite()->setVelocity(0,0) ;
+            animal->setCollides(true) ;
             TextStream::instance().setText("yes", 4, 1);
             //TODO update stats
             //TODO remove and hide animal from vector

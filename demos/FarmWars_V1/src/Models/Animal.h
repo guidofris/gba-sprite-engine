@@ -34,6 +34,13 @@ private:
     std::shared_ptr<AnimalStats> stats;
 
     bool isInit = 0;
+    bool collides = false ;
+public:
+    bool isCollides() const;
+
+    void setCollides(bool collides);
+
+private:
 
     AnimalType type;
 public:

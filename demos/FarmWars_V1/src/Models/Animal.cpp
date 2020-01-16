@@ -136,5 +136,13 @@ Animal::Animal(Sprite *pSprite, AnimalType type, AnimalDirection direction, int 
     sprite->update();
 }
 
+bool Animal::isCollides() const {
+    return collides;
+}
+
+void Animal::setCollides(bool collides) {
+    Animal::collides = collides;
+}
+
 
 

@@ -6,7 +6,8 @@ a Game has 2 FarmBases, userFarm and cpuFarm (computer)
 Your FarmBase holds a vector of animals.
 When select is pressed, a selection screen comes up where you can choose you animal. This is then spawned by your farm and added to it's vector. Your animal now moves towards your enemy's farm, where it will try and destroy the others farm. However when the enemy farm spawns animals itself, your animals will have to fight them and win to go further. To win you have to destroy your enemy's base.
 
-Every animal your want to choose have different attacks, healths and speeds. 
+Every animal your want to choose have different attacks, healths and speeds.
+
 
 May the best farmer win!
 
